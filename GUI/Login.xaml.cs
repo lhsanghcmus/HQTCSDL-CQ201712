@@ -35,11 +35,11 @@ namespace GUI
         {
             string userName = txtUser.Text;
             string passWord = txtPassWord.Password;
-
             DTO.ThanhVien result = BUS.ThanhVien.GetThanhVien(userName, passWord);
             if (result == null)
             {
                 MessageBox.Show("Đăng nhập thất bại","Thông báo",MessageBoxButton.OK);
+                
             } else
             {
                 var window = new MainWindow();

@@ -28,6 +28,7 @@ namespace DAO
                 chiNhanh.TenChiNhanh = reader["TenChiNhanh"].ToString();
                 result.Add(chiNhanh);
             }
+            DataProvider.CloseConnection(con);
             return result;
         }
     }

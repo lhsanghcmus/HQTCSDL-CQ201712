@@ -86,5 +86,18 @@ namespace GUI
                 customerLogin.Visibility = Visibility.Collapsed;
             }
         }
+
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = ListViewMenu.SelectedIndex;
+            switch (index) {
+                case 0:
+                    GridPrincipal.Content = new ThucDon();
+                    break;
+                case 1:
+                    GridPrincipal.Content = new DonHang();
+                    break;
+            }
+        }
     }
 }

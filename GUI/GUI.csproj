@@ -61,6 +61,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DonHang.xaml.cs">
+      <DependentUpon>DonHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ThucDon.xaml.cs">
+      <DependentUpon>ThucDon.xaml</DependentUpon>
+    </Compile>
+    <Page Include="DonHang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -80,6 +90,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ThucDon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -118,7 +132,9 @@
       <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\pepsi.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\logo.png" />
     <Resource Include="Assets\user.png" />

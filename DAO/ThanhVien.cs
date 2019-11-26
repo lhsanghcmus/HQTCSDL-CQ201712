@@ -49,7 +49,7 @@ namespace DAO
                 }
                 break;
             }
-
+            DataProvider.CloseConnection(con);
             return result;
         }
     }

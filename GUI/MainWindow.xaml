@@ -36,8 +36,8 @@
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
     </Window.Triggers>
-    <Grid Background="LightGray">
-        <Grid Height="60" VerticalAlignment="Top" Background="#FFF" >
+    <Grid Background="#fff">
+        <Grid Height="60" VerticalAlignment="Top" Background="LightGray" >
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Left">
                 <Image Source="Assets/logo.png" Margin="70 0 10 0" Width="60" Height="60" VerticalAlignment="Center"/>
                 <TextBlock Foreground="Black" Text="Huong Viet Restaurant" VerticalAlignment="Center" FontSize="22" FontFamily="VNI-OngDoHL"/>
@@ -83,7 +83,7 @@
                         <materialDesign:PackIcon  Kind="Menu" Foreground="White" Width="25" Height="25"></materialDesign:PackIcon>
                     </Button>
                 </Grid>
-                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled"  Foreground="White">
+                <ListView x:Name="ListViewMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  Foreground="White" SelectedIndex="0" SelectionChanged="ListViewMenu_SelectionChanged">
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Margin="10" Kind="ViewDashboard" Width="25" Height="25" VerticalAlignment="Center"></materialDesign:PackIcon>
