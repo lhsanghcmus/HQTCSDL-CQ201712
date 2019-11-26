@@ -12,7 +12,11 @@ namespace DAO
     {
         public static SqlConnection GetConnection()
         {
-            string connectionString = @"Data Source=GHN-TECH-LP0126;Initial Catalog=HuongVietRestaurant;Integrated Security=True";
+            string[] arrConectionString = new string[3];
+            arrConectionString[0] = @"Data Source=GHN-TECH-0126;Initial Catalog=HuongVietRestaurant;Integrated Security=True";
+            arrConectionString[1] = @"Data Source=HUYENN;Initial Catalog=HuongVietRestaurant;Integrated Security=True";
+            arrConectionString[2] = @"Data Source=DESKTOP-DPU2LFR\SQLEXPRESS;Initial Catalog=HuongVietRestaurant;Integrated Security=True";
+            string connectionString = arrConectionString[1];
             SqlConnection con = new SqlConnection(connectionString);
             con.Open();
             return con;
