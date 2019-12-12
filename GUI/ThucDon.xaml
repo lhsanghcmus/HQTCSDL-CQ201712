@@ -11,364 +11,53 @@
 
     <Grid>
         <Grid VerticalAlignment="top" Height="50">
-            <Button Content="Đã chọn: 6" FontFamily="Montserrat" HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Center" Height="30"></Button>
+            <Button x:Name="countSelected" FontFamily="Montserrat" HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Center" Height="30"></Button>
         </Grid>
-        <ListView x:Name="itemListView" HorizontalAlignment="Stretch" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="0,60,0,-0.4" Height="425">
+        <ListView x:Name="itemListView" HorizontalAlignment="Stretch" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="0,60,0,-104.4" Height="494">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="4"  HorizontalAlignment="Stretch"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
-            <ListViewItem Width="197" Height="235" Margin="0 10 0 0" FontFamily="Montserrat">
-                <Canvas Height="235" Width="190" >
-                    <StackPanel Canvas.Left="0" Width="190">
-                        <Image HorizontalAlignment="Center" Source="Assets/pepsi.jpg" Width="156" Height="120" Margin="14,0,20.4,0"/>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="125" Width="190">
-                        <TextBlock FontFamily="Montserrat" HorizontalAlignment="Center" Text="Nước ngọt Pepsi" RenderTransformOrigin="0.51,0.095"></TextBlock>
-                    </StackPanel>
-                    <StackPanel  Canvas.Top="140" Canvas.Left="0" Width="190">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock FontFamily="Montserrat" Text="Số lượng còn lại: " Canvas.Left="37" Canvas.Top="151"></TextBlock>
-                            <TextBlock  FontFamily="Montserrat" Text="50" Canvas.Left="135" Canvas.Top="152"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Canvas.Top="155" Canvas.Left="0" Width="190">
-                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text="15000"></TextBlock>
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text=" VND"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="180" Width="190">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.423,0.466">
-                            <Button Width="50">
-                                <materialDesign:PackIcon  Kind="Add" />
-                            </Button>
-                            <StackPanel Background="#eff0f1" Width="50">
-                                <TextBlock TextAlignment="Center" Height="20" Width="20" Text="0" Margin="0 7 0 0"/>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Canvas Height="235" Width="190" >
+                        <StackPanel Canvas.Left="25">
+                            <StackPanel Canvas.Left="0" Width="190">
+                                <Image HorizontalAlignment="Center" Source="{Binding HinhAnh}" Width="156" Height="120" Margin="14,0,20.4,0"/>
                             </StackPanel>
-                            <Button Width="50">
-                                <materialDesign:PackIcon Kind="Minus" />
-                            </Button>
-                        </StackPanel>
-                    </StackPanel>
-                </Canvas>
-            </ListViewItem>
-            <ListViewItem Width="197" Height="235" Margin="0 10 0 0" FontFamily="Montserrat">
-                <Canvas Height="235" Width="190" >
-                    <StackPanel Canvas.Left="0" Width="190">
-                        <Image HorizontalAlignment="Center" Source="Assets/pepsi.jpg" Width="156" Height="120" Margin="14,0,20.4,0"/>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="125" Width="190">
-                        <TextBlock FontFamily="Montserrat" HorizontalAlignment="Center" Text="Nước ngọt Pepsi" RenderTransformOrigin="0.51,0.095"></TextBlock>
-                    </StackPanel>
-                    <StackPanel  Canvas.Top="140" Canvas.Left="0" Width="190">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock FontFamily="Montserrat" Text="Số lượng còn lại: " Canvas.Left="37" Canvas.Top="151"></TextBlock>
-                            <TextBlock  FontFamily="Montserrat" Text="50" Canvas.Left="135" Canvas.Top="152"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Canvas.Top="155" Canvas.Left="0" Width="190">
-                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text="15000"></TextBlock>
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text=" VND"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="180" Width="190">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.423,0.466">
-                            <Button Width="50">
-                                <materialDesign:PackIcon  Kind="Add" />
-                            </Button>
-                            <StackPanel Background="#eff0f1" Width="50">
-                                <TextBlock TextAlignment="Center" Height="20" Width="20" Text="0" Margin="0 7 0 0"/>
+                            <StackPanel  Canvas.Left="0" Canvas.Top="125" Width="190">
+                                <TextBlock FontFamily="Montserrat" HorizontalAlignment="Center" Text="{Binding TenMon}" RenderTransformOrigin="0.51,0.095"></TextBlock>
                             </StackPanel>
-                            <Button Width="50">
-                                <materialDesign:PackIcon Kind="Minus" />
-                            </Button>
-                        </StackPanel>
-                    </StackPanel>
-                </Canvas>
-            </ListViewItem>
-            <ListViewItem Width="197" Height="235" Margin="0 10 0 0" FontFamily="Montserrat">
-                <Canvas Height="235" Width="190" >
-                    <StackPanel Canvas.Left="0" Width="190">
-                        <Image HorizontalAlignment="Center" Source="Assets/pepsi.jpg" Width="156" Height="120" Margin="14,0,20.4,0"/>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="125" Width="190">
-                        <TextBlock FontFamily="Montserrat" HorizontalAlignment="Center" Text="Nước ngọt Pepsi" RenderTransformOrigin="0.51,0.095"></TextBlock>
-                    </StackPanel>
-                    <StackPanel  Canvas.Top="140" Canvas.Left="0" Width="190">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock FontFamily="Montserrat" Text="Số lượng còn lại: " Canvas.Left="37" Canvas.Top="151"></TextBlock>
-                            <TextBlock  FontFamily="Montserrat" Text="50" Canvas.Left="135" Canvas.Top="152"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Canvas.Top="155" Canvas.Left="0" Width="190">
-                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text="15000"></TextBlock>
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text=" VND"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="180" Width="190">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.423,0.466">
-                            <Button Width="50">
-                                <materialDesign:PackIcon  Kind="Add" />
-                            </Button>
-                            <StackPanel Background="#eff0f1" Width="50">
-                                <TextBlock TextAlignment="Center" Height="20" Width="20" Text="0" Margin="0 7 0 0"/>
+                            <StackPanel  Canvas.Top="140" Canvas.Left="0" Width="190">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock FontFamily="Montserrat" Text="Số lượng còn lại: " Canvas.Left="37" Canvas.Top="151"></TextBlock>
+                                    <TextBlock  FontFamily="Montserrat" Text="{Binding SoLuong}" Canvas.Left="135" Canvas.Top="152"></TextBlock>
+                                </StackPanel>
                             </StackPanel>
-                            <Button Width="50">
-                                <materialDesign:PackIcon Kind="Minus" />
-                            </Button>
-                        </StackPanel>
-                    </StackPanel>
-                </Canvas>
-            </ListViewItem>
-            <ListViewItem Width="197" Height="235" Margin="0 10 0 0"  FontFamily="Montserrat">
-                <Canvas Height="235" Width="190" >
-                    <StackPanel Canvas.Left="0" Width="190">
-                        <Image HorizontalAlignment="Center" Source="Assets/pepsi.jpg" Width="156" Height="120" Margin="14,0,20.4,0"/>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="125" Width="190">
-                        <TextBlock FontFamily="Montserrat" HorizontalAlignment="Center" Text="Nước ngọt Pepsi" RenderTransformOrigin="0.51,0.095"></TextBlock>
-                    </StackPanel>
-                    <StackPanel  Canvas.Top="140" Canvas.Left="0" Width="190">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock FontFamily="Montserrat" Text="Số lượng còn lại: " Canvas.Left="37" Canvas.Top="151"></TextBlock>
-                            <TextBlock  FontFamily="Montserrat" Text="50" Canvas.Left="135" Canvas.Top="152"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Canvas.Top="155" Canvas.Left="0" Width="190">
-                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text="15000"></TextBlock>
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text=" VND"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="180" Width="190">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.423,0.466">
-                            <Button Width="50">
-                                <materialDesign:PackIcon  Kind="Add" />
-                            </Button>
-                            <StackPanel Background="#eff0f1" Width="50">
-                                <TextBlock TextAlignment="Center" Height="20" Width="20" Text="0" Margin="0 7 0 0"/>
+                            <StackPanel Canvas.Top="155" Canvas.Left="0" Width="190">
+                                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                    <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text="{Binding DonGia}"></TextBlock>
+                                    <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text=" VND"></TextBlock>
+                                </StackPanel>
                             </StackPanel>
-                            <Button Width="50">
-                                <materialDesign:PackIcon Kind="Minus" />
-                            </Button>
-                        </StackPanel>
-                    </StackPanel>
-                </Canvas>
-            </ListViewItem>
-            <ListViewItem Width="197" Height="235" Margin="0 10 0 0"  FontFamily="Montserrat">
-                <Canvas Height="235" Width="190" >
-                    <StackPanel Canvas.Left="0" Width="190">
-                        <Image HorizontalAlignment="Center" Source="Assets/pepsi.jpg" Width="156" Height="120" Margin="14,0,20.4,0"/>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="125" Width="190">
-                        <TextBlock FontFamily="Montserrat" HorizontalAlignment="Center" Text="Nước ngọt Pepsi" RenderTransformOrigin="0.51,0.095"></TextBlock>
-                    </StackPanel>
-                    <StackPanel  Canvas.Top="140" Canvas.Left="0" Width="190">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock FontFamily="Montserrat" Text="Số lượng còn lại: " Canvas.Left="37" Canvas.Top="151"></TextBlock>
-                            <TextBlock  FontFamily="Montserrat" Text="50" Canvas.Left="135" Canvas.Top="152"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Canvas.Top="155" Canvas.Left="0" Width="190">
-                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text="15000"></TextBlock>
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text=" VND"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="180" Width="190">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.423,0.466">
-                            <Button Width="50">
-                                <materialDesign:PackIcon  Kind="Add" />
-                            </Button>
-                            <StackPanel Background="#eff0f1" Width="50">
-                                <TextBlock TextAlignment="Center" Height="20" Width="20" Text="0" Margin="0 7 0 0"/>
+                            <StackPanel  Canvas.Left="0" Canvas.Top="180" Width="190">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.423,0.466">
+                                    <Button Width="50" Click="GiamSoLuong">
+                                        <materialDesign:PackIcon  Kind="Minus" />
+                                    </Button>
+                                    <StackPanel Background="#eff0f1" Width="50">
+                                        <TextBlock TextAlignment="Center" Height="20" Width="20" Text="{Binding SoLuongDuocChon}" Margin="0 7 0 0"/>
+                                    </StackPanel>
+                                    <Button Width="50" Click="TangSoLuong">
+                                        <materialDesign:PackIcon Kind="Add" />
+                                    </Button>
+                                </StackPanel>
                             </StackPanel>
-                            <Button Width="50">
-                                <materialDesign:PackIcon Kind="Minus" />
-                            </Button>
                         </StackPanel>
-                    </StackPanel>
-                </Canvas>
-            </ListViewItem>
-            <ListViewItem Width="197" Height="235" Margin="0 10 0 0"  FontFamily="Montserrat">
-                <Canvas Height="235" Width="190" >
-                    <StackPanel Canvas.Left="0" Width="190">
-                        <Image HorizontalAlignment="Center" Source="Assets/pepsi.jpg" Width="156" Height="120" Margin="14,0,20.4,0"/>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="125" Width="190">
-                        <TextBlock FontFamily="Montserrat" HorizontalAlignment="Center" Text="Nước ngọt Pepsi" RenderTransformOrigin="0.51,0.095"></TextBlock>
-                    </StackPanel>
-                    <StackPanel  Canvas.Top="140" Canvas.Left="0" Width="190">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock FontFamily="Montserrat" Text="Số lượng còn lại: " Canvas.Left="37" Canvas.Top="151"></TextBlock>
-                            <TextBlock  FontFamily="Montserrat" Text="50" Canvas.Left="135" Canvas.Top="152"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Canvas.Top="155" Canvas.Left="0" Width="190">
-                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text="15000"></TextBlock>
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text=" VND"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="180" Width="190">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.423,0.466">
-                            <Button Width="50">
-                                <materialDesign:PackIcon  Kind="Add" />
-                            </Button>
-                            <StackPanel Background="#eff0f1" Width="50">
-                                <TextBlock TextAlignment="Center" Height="20" Width="20" Text="0" Margin="0 7 0 0"/>
-                            </StackPanel>
-                            <Button Width="50">
-                                <materialDesign:PackIcon Kind="Minus" />
-                            </Button>
-                        </StackPanel>
-                    </StackPanel>
-                </Canvas>
-            </ListViewItem>
-            <ListViewItem Width="197" Height="235" Margin="0 10 0 0"  FontFamily="Montserrat">
-                <Canvas Height="235" Width="190" >
-                    <StackPanel Canvas.Left="0" Width="190">
-                        <Image HorizontalAlignment="Center" Source="Assets/pepsi.jpg" Width="156" Height="120" Margin="14,0,20.4,0"/>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="125" Width="190">
-                        <TextBlock FontFamily="Montserrat" HorizontalAlignment="Center" Text="Nước ngọt Pepsi" RenderTransformOrigin="0.51,0.095"></TextBlock>
-                    </StackPanel>
-                    <StackPanel  Canvas.Top="140" Canvas.Left="0" Width="190">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock FontFamily="Montserrat" Text="Số lượng còn lại: " Canvas.Left="37" Canvas.Top="151"></TextBlock>
-                            <TextBlock  FontFamily="Montserrat" Text="50" Canvas.Left="135" Canvas.Top="152"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Canvas.Top="155" Canvas.Left="0" Width="190">
-                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text="15000"></TextBlock>
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text=" VND"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="180" Width="190">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.423,0.466">
-                            <Button Width="50">
-                                <materialDesign:PackIcon  Kind="Add" />
-                            </Button>
-                            <StackPanel Background="#eff0f1" Width="50">
-                                <TextBlock TextAlignment="Center" Height="20" Width="20" Text="0" Margin="0 7 0 0"/>
-                            </StackPanel>
-                            <Button Width="50">
-                                <materialDesign:PackIcon Kind="Minus" />
-                            </Button>
-                        </StackPanel>
-                    </StackPanel>
-                </Canvas>
-            </ListViewItem>
-            <ListViewItem Width="197" Height="235" Margin="0 10 0 0"  FontFamily="Montserrat">
-                <Canvas Height="235" Width="190" >
-                    <StackPanel Canvas.Left="0" Width="190">
-                        <Image HorizontalAlignment="Center" Source="Assets/pepsi.jpg" Width="156" Height="120" Margin="14,0,20.4,0"/>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="125" Width="190">
-                        <TextBlock FontFamily="Montserrat" HorizontalAlignment="Center" Text="Nước ngọt Pepsi" RenderTransformOrigin="0.51,0.095"></TextBlock>
-                    </StackPanel>
-                    <StackPanel  Canvas.Top="140" Canvas.Left="0" Width="190">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock FontFamily="Montserrat" Text="Số lượng còn lại: " Canvas.Left="37" Canvas.Top="151"></TextBlock>
-                            <TextBlock  FontFamily="Montserrat" Text="50" Canvas.Left="135" Canvas.Top="152"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Canvas.Top="155" Canvas.Left="0" Width="190">
-                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text="15000"></TextBlock>
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text=" VND"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="180" Width="190">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.423,0.466">
-                            <Button Width="50">
-                                <materialDesign:PackIcon  Kind="Add" />
-                            </Button>
-                            <StackPanel Background="#eff0f1" Width="50">
-                                <TextBlock TextAlignment="Center" Height="20" Width="20" Text="0" Margin="0 7 0 0"/>
-                            </StackPanel>
-                            <Button Width="50">
-                                <materialDesign:PackIcon Kind="Minus" />
-                            </Button>
-                        </StackPanel>
-                    </StackPanel>
-                </Canvas>
-            </ListViewItem>
-            <ListViewItem Width="197" Height="235" Margin="0 10 0 0"  FontFamily="Montserrat">
-                <Canvas Height="235" Width="190" >
-                    <StackPanel Canvas.Left="0" Width="190">
-                        <Image HorizontalAlignment="Center" Source="Assets/pepsi.jpg" Width="156" Height="120" Margin="14,0,20.4,0"/>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="125" Width="190">
-                        <TextBlock FontFamily="Montserrat" HorizontalAlignment="Center" Text="Nước ngọt Pepsi" RenderTransformOrigin="0.51,0.095"></TextBlock>
-                    </StackPanel>
-                    <StackPanel  Canvas.Top="140" Canvas.Left="0" Width="190">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock FontFamily="Montserrat" Text="Số lượng còn lại: " Canvas.Left="37" Canvas.Top="151"></TextBlock>
-                            <TextBlock  FontFamily="Montserrat" Text="50" Canvas.Left="135" Canvas.Top="152"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Canvas.Top="155" Canvas.Left="0" Width="190">
-                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text="15000"></TextBlock>
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text=" VND"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="180" Width="190">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.423,0.466">
-                            <Button Width="50">
-                                <materialDesign:PackIcon  Kind="Add" />
-                            </Button>
-                            <StackPanel Background="#eff0f1" Width="50">
-                                <TextBlock TextAlignment="Center" Height="20" Width="20" Text="0" Margin="0 7 0 0"/>
-                            </StackPanel>
-                            <Button Width="50">
-                                <materialDesign:PackIcon Kind="Minus" />
-                            </Button>
-                        </StackPanel>
-                    </StackPanel>
-                </Canvas>
-            </ListViewItem>
-            <ListViewItem Width="197" Height="235" Margin="0 10 0 0"  FontFamily="Montserrat">
-                <Canvas Height="235" Width="190" >
-                    <StackPanel Canvas.Left="0" Width="190">
-                        <Image HorizontalAlignment="Center" Source="Assets/pepsi.jpg" Width="156" Height="120" Margin="14,0,20.4,0"/>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="125" Width="190">
-                        <TextBlock FontFamily="Montserrat" HorizontalAlignment="Center" Text="Nước ngọt Pepsi" RenderTransformOrigin="0.51,0.095"></TextBlock>
-                    </StackPanel>
-                    <StackPanel  Canvas.Top="140" Canvas.Left="0" Width="190">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock FontFamily="Montserrat" Text="Số lượng còn lại: " Canvas.Left="37" Canvas.Top="151"></TextBlock>
-                            <TextBlock  FontFamily="Montserrat" Text="50" Canvas.Left="135" Canvas.Top="152"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Canvas.Top="155" Canvas.Left="0" Width="190">
-                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text="15000"></TextBlock>
-                            <TextBlock FontFamily="Montserrat" Foreground="Red" FontWeight="Bold" Text=" VND"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel  Canvas.Left="0" Canvas.Top="180" Width="190">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.423,0.466">
-                            <Button Width="50">
-                                <materialDesign:PackIcon  Kind="Add" />
-                            </Button>
-                            <StackPanel Background="#eff0f1" Width="50">
-                                <TextBlock TextAlignment="Center" Height="20" Width="20" Text="0" Margin="0 7 0 0"/>
-                            </StackPanel>
-                            <Button Width="50">
-                                <materialDesign:PackIcon Kind="Minus" />
-                            </Button>
-                        </StackPanel>
-                    </StackPanel>
-                </Canvas>
-            </ListViewItem>
+                    </Canvas>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </Page>
