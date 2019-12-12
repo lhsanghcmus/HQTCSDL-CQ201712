@@ -52,24 +52,46 @@
                 </ComboBox>
                 <materialDesign:PopupBox Foreground="Black"  Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="false" FontFamily="Times New Roman">
                     <StackPanel Width="150">
-                            <StackPanel x:Name="customerLogin">
-                                <StackPanel>
-                                    <Image Source="Assets/user.png" Width="50" Height="50"></Image>
-                                    <Button Cursor="Hand" x:Name="customerName" Margin="0 5 0 0" HorizontalAlignment="Center"></Button>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <TextBlock Foreground="Red" x:Name="customerPoint" FontStyle="Italic" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Foreground="Red" Text=" điểm" FontWeight="Bold"></TextBlock>
-                                    </StackPanel>
+                        <StackPanel x:Name="customerLogin">
+                            <StackPanel>
+                                <Image Source="Assets/user.png" Width="50" Height="50"></Image>
+                                <Button Cursor="Hand" x:Name="customerName" Margin="0 5 0 0" HorizontalAlignment="Center"></Button>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Foreground="Red" x:Name="customerPoint" FontStyle="Italic" FontWeight="Bold"></TextBlock>
+                                    <TextBlock Foreground="Red" Text=" điểm" FontWeight="Bold"></TextBlock>
                                 </StackPanel>
-                                <Separator></Separator>
-                                <Button x:Name="btnLogout" Content="Đăng xuất" Click="BtnLogout_Click"></Button>
                             </StackPanel>
-                            <StackPanel x:Name="notLogin" >
-                                <Button Content="Đăng nhập" Click="btnLogin_Click"></Button>
-                            </StackPanel>
+                            <Separator></Separator>
+                            <Button x:Name="btnLogout" Content="Đăng xuất" Click="BtnLogout_Click"></Button>
                         </StackPanel>
-                    
+                        <StackPanel x:Name="notLogin" >
+                            <Button Content="Đăng nhập" Click="btnLogin_Click"></Button>
+                        </StackPanel>
+                    </StackPanel>
+
                 </materialDesign:PopupBox>
+                <materialDesign:PopupBox Foreground="Black"  Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="false" FontFamily="Times New Roman">
+                    <StackPanel Width="150">
+                        <StackPanel x:Name="memberLogin">
+                            <StackPanel>
+                                <Image Source="Assets/user.png" Width="50" Height="50"></Image>
+                                <Button Cursor="Hand" x:Name="memberName" Margin="0 5 0 0" HorizontalAlignment="Center"></Button>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Foreground="Red" Text=" Chi nhánh " FontWeight="Bold"></TextBlock>
+                                    <TextBlock Foreground="Red" x:Name="nameBranch" FontStyle="Italic" FontWeight="Bold"></TextBlock>
+                                    
+                                </StackPanel>
+                            </StackPanel>
+                            <Separator></Separator>
+                            <Button x:Name="btnMemberLogout" Content="Đăng xuất" Click="BtnLogout_Click"></Button>
+                        </StackPanel>
+                        <StackPanel x:Name="memberNotLogin" >
+                            <Button Content="Đăng nhập" Click="btnLogin_Click"></Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                </materialDesign:PopupBox>
+
             </StackPanel>
         </Grid>
         <Frame x:Name="GridPrincipal" Margin="60,60,0,0" NavigationUIVisibility="Hidden"/>
@@ -98,6 +120,7 @@
                     </ListViewItem>
                 </ListView>
             </StackPanel>
+            
         </Grid>
     </Grid>
 </Window>
