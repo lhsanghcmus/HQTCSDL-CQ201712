@@ -26,16 +26,16 @@
 
         </Rectangle>
         <Grid Width="280" Height="240" VerticalAlignment="Bottom" Margin="0,100">
-            <TextBlock Text="ĐĂNG NHẬP VÀO HỆ THỐNG" HorizontalAlignment="Center" Margin="20" FontSize="18" Foreground="Gray"/>
+            <TextBlock Text="ĐĂNG NHẬP VÀO HỆ THỐNG" HorizontalAlignment="Center" Margin="20" FontSize="18" Foreground="Gray" FontFamily="Montserrat"/>
 
-            <Label x:Name="lblUser" HorizontalAlignment="Left" Margin="0,73,0,0" VerticalAlignment="Top" Target="{Binding ElementName=txtUser}">_Tên đăng nhập:</Label>
-            <Label x:Name="lblPass" HorizontalAlignment="Left" Margin="0,116,0,0" VerticalAlignment="Top" Target="{Binding ElementName=txtPassWord}">_Mật khẩu:</Label>
-            <TextBox x:Name="txtUser" Foreground="Black" HorizontalAlignment="Left" Height="23" Margin="91,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180"/>
-            <PasswordBox x:Name="txtPassWord" Foreground="Black" HorizontalAlignment="Left" Height="23" Margin="91,116,0,0"  VerticalAlignment="Top" Width="180" />
-            <Button x:Name="btnLogin"  HorizontalAlignment="Center" Height="Auto" Margin="31,184,144,24" Width="105" Content="Đăng nhập" Click="BtnLogin_Click">
+            <Label x:Name="lblUser" HorizontalAlignment="Left" Margin="0,73,0,0" VerticalAlignment="Top" Target="{Binding ElementName=txtUser}" FontFamily="Montserrat">_Tên đăng nhập:</Label>
+            <Label x:Name="lblPass" HorizontalAlignment="Left" Margin="0,116,0,0" VerticalAlignment="Top" Target="{Binding ElementName=txtPassWord}" FontFamily="Montserrat">_Mật khẩu:</Label>
+            <TextBox x:Name="txtUser" Foreground="Black" HorizontalAlignment="Left" Height="23" Margin="91,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" FontFamily="Montserrat"/>
+            <PasswordBox x:Name="txtPassWord" Foreground="Black" HorizontalAlignment="Left" Height="23" Margin="91,116,0,0"  VerticalAlignment="Top" Width="180" FontFamily="Montserrat"/>
+            <Button x:Name="btnLogin"  HorizontalAlignment="Center" Height="Auto" Margin="31,184,144,24" Width="105" Content="Đăng nhập" Click="BtnLogin_Click" FontFamily="Montserrat">
 
             </Button>
-            <Button Content="Hủy bỏ" Margin="162,184,25,24" Height="Auto" Click="cancelLogin">
+            <Button Content="Hủy bỏ" Margin="162,184,25,24" Height="Auto" Click="cancelLogin" FontFamily="Montserrat">
                 
             </Button>
         </Grid>
