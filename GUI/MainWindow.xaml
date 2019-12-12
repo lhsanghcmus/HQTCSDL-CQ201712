@@ -43,10 +43,10 @@
                 <TextBlock Foreground="Black" Text="Huong Viet Restaurant" VerticalAlignment="Center" FontSize="22" FontFamily="VNI-OngDoHL"/>
             </StackPanel>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                <ComboBox x:Name="cmbChiNhanh" Margin="10 0 0 0" Foreground="Black" materialDesign:HintAssist.Hint="Chi nhánh" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontFamily="Times New Roman" FontSize="16" Loaded="loadChiNhanh" SelectionChanged="CmbChiNhanh_SelectionChanged">
+                <ComboBox x:Name="cmbChiNhanh" Margin="10 0 0 0" Foreground="Black" materialDesign:HintAssist.Hint="Chi nhánh" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontFamily="Montserrat" FontSize="16" Loaded="loadChiNhanh" SelectionChanged="CmbChiNhanh_SelectionChanged">
                     <ComboBox.ItemTemplate>
                         <DataTemplate DataType="DTO.ChiNhanh">
-                            <TextBlock Text="{Binding TenChiNhanh}"></TextBlock>
+                            <TextBlock FontFamily="Montserrat" Text="{Binding TenChiNhanh}"></TextBlock>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
@@ -55,17 +55,17 @@
                         <StackPanel x:Name="customerLogin">
                             <StackPanel>
                                 <Image Source="Assets/user.png" Width="50" Height="50"></Image>
-                                <Button Cursor="Hand" x:Name="customerName" Margin="0 5 0 0" HorizontalAlignment="Center"></Button>
+                                <Button FontFamily="Montserrat" Cursor="Hand" x:Name="customerName" Margin="0 5 0 0" HorizontalAlignment="Center"></Button>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBlock Foreground="Red" x:Name="customerPoint" FontStyle="Italic" FontWeight="Bold"></TextBlock>
-                                    <TextBlock Foreground="Red" Text=" điểm" FontWeight="Bold"></TextBlock>
+                                    <TextBlock FontFamily="Montserrat" Foreground="Red" x:Name="customerPoint" FontStyle="Italic" FontWeight="Bold"></TextBlock>
+                                    <TextBlock FontFamily="Montserrat" Foreground="Red" Text=" điểm" FontWeight="Bold"></TextBlock>
                                 </StackPanel>
                             </StackPanel>
                             <Separator></Separator>
-                            <Button x:Name="btnLogout" Content="Đăng xuất" Click="BtnLogout_Click"></Button>
+                            <Button x:Name="btnLogout" FontFamily="Montserrat" Content="Đăng xuất" Click="BtnLogout_Click"></Button>
                         </StackPanel>
                         <StackPanel x:Name="notLogin" >
-                            <Button Content="Đăng nhập" Click="btnLogin_Click"></Button>
+                            <Button Content="Đăng nhập" FontFamily="Montserrat" Click="btnLogin_Click"></Button>
                         </StackPanel>
                     </StackPanel>
 
@@ -79,7 +79,6 @@
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                     <TextBlock Foreground="Red" Text=" Chi nhánh " FontWeight="Bold"></TextBlock>
                                     <TextBlock Foreground="Red" x:Name="nameBranch" FontStyle="Italic" FontWeight="Bold"></TextBlock>
-                                    
                                 </StackPanel>
                             </StackPanel>
                             <Separator></Separator>
@@ -89,9 +88,7 @@
                             <Button Content="Đăng nhập" Click="btnLogin_Click"></Button>
                         </StackPanel>
                     </StackPanel>
-
                 </materialDesign:PopupBox>
-
             </StackPanel>
         </Grid>
         <Frame x:Name="GridPrincipal" Margin="60,60,0,0" NavigationUIVisibility="Hidden"/>
@@ -109,13 +106,13 @@
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Margin="10" Kind="ViewDashboard" Width="25" Height="25" VerticalAlignment="Center"></materialDesign:PackIcon>
-                            <TextBlock Text="Thực đơn" VerticalAlignment="Center" Margin="20 10"></TextBlock>
+                            <TextBlock Text="Thực đơn" FontFamily="Montserrat" VerticalAlignment="Center" Margin="20 10"></TextBlock>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Margin="10" Kind="LibraryBooks" Width="25" Height="25" VerticalAlignment="Center"></materialDesign:PackIcon>
-                            <TextBlock Text="Quản lý đơn hàng" VerticalAlignment="Center" Margin="20 10"></TextBlock>
+                            <TextBlock Text="Quản lý đơn hàng" FontFamily="Montserrat" VerticalAlignment="Center" Margin="20 10"></TextBlock>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>

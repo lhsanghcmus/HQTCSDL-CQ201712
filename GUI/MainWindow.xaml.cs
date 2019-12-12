@@ -28,6 +28,7 @@ namespace GUI
         public MainWindow()
         {
             InitializeComponent();
+            //this.FontFamily = new FontFamily("Montserrat");
             listChiNhanh = BUS.ChiNhanh.LoadDSChiNhanh();
             typeUser = 0;
             setTypeUser(0);
