@@ -23,6 +23,7 @@ namespace GUI
     {
         List<DTO.ChiNhanh> listChiNhanh;
         DTO.ThanhVien thanhVien;
+        DTO.NhanVien nhanvien;
         private int typeUser;
         public MainWindow()
         {
@@ -55,7 +56,12 @@ namespace GUI
             customerName.Content = this.thanhVien.HoTen;
             customerPoint.Text = this.thanhVien.DiemTichLuy.ToString();
         }
-
+        internal void setUserInfo2(DTO.NhanVien result)
+        {
+            this.nhanvien = result;
+            memberName.Content = this.nhanvien.HoTen;
+            nameBranch.Text = this.nhanvien.MaChiNhanh.ToString();
+        }
         private void loadChiNhanh(object sender, RoutedEventArgs e)
         {
             cmbChiNhanh.ItemsSource = listChiNhanh;
@@ -84,6 +90,11 @@ namespace GUI
             {
                 notLogin.Visibility = Visibility.Visible;
                 customerLogin.Visibility = Visibility.Collapsed;
+            }
+            else if (this.typeUser == 2) // nhân viên
+            {
+                memberLogin.Visibility = Visibility.Visible;
+                notLogin.Visibility = Visibility.Collapsed;
             }
         }
 
