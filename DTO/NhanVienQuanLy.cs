@@ -6,32 +6,30 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class NhanVien
+    public class NhanVienQuanLy
     {
         private int maNhanVien;
         private string hoTen;
         private string cmnd;
-        private int maChiNhanh;
         private string sdt;
-        private string email;        
+        private string email;
         private string matKhau;
-        private string tenChiNhanh;
+        
         public int MaNhanVien { get => maNhanVien; set => maNhanVien = value; }
         public string HoTen { get => hoTen; set => hoTen = value; }
         public string Cmnd { get => cmnd; set => cmnd = value; }
-        public int MaChiNhanh { get => maChiNhanh; set => maChiNhanh = value; }
+        
         public string Sdt { get => sdt; set => sdt = value; }
         public string Email { get => email; set => email = value; }
-        
-        public string MatKhau { get => matKhau; set => matKhau = value; }
-        public string TenChiNhanh { get => tenChiNhanh; set => tenChiNhanh = value; }
 
-        public NhanVien()
+        public string MatKhau { get => matKhau; set => matKhau = value; }
+        
+
+        public NhanVienQuanLy()
         {
-            HoTen = Cmnd =  Sdt = Email = MatKhau = tenChiNhanh="";
-            MaChiNhanh = 0;           
+            HoTen = Cmnd = Sdt = Email = MatKhau =  "";
             MaNhanVien = 0;
-          
+
         }
 
     }

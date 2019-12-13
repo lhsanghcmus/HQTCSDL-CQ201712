@@ -57,8 +57,8 @@
                                 <Image Source="Assets/user.png" Width="50" Height="50"></Image>
                                 <Button FontFamily="Montserrat" Cursor="Hand" x:Name="customerName" Margin="0 5 0 0" HorizontalAlignment="Center"></Button>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBlock FontFamily="Montserrat" Foreground="Red" x:Name="customerPoint" FontStyle="Italic" FontWeight="Bold"></TextBlock>
-                                    <TextBlock FontFamily="Montserrat" Foreground="Red" Text=" điểm" FontWeight="Bold"></TextBlock>
+                                    <TextBlock  FontFamily="Montserrat" Foreground="Red" x:Name="customerPoint" FontStyle="Italic" FontWeight="Bold"></TextBlock>
+                                    <TextBlock  FontFamily="Montserrat" Foreground="Red" x:Name="nameBranch" FontStyle="Italic" FontWeight="Bold"></TextBlock>
                                 </StackPanel>
                             </StackPanel>
                             <Separator></Separator>
@@ -69,7 +69,7 @@
                         </StackPanel>
                     </StackPanel>
 
-                </materialDesign:PopupBox>
+                <!--</materialDesign:PopupBox>
                 <materialDesign:PopupBox Foreground="Black"  Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="false" FontFamily="Times New Roman">
                     <StackPanel Width="150">
                         <StackPanel x:Name="memberLogin">
@@ -87,7 +87,10 @@
                         <StackPanel x:Name="memberNotLogin" >
                             <Button Content="Đăng nhập" Click="btnLogin_Click"></Button>
                         </StackPanel>
+
                     </StackPanel>
+
+                    </StackPanel>-->
                 </materialDesign:PopupBox>
             </StackPanel>
         </Grid>

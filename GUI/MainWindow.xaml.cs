@@ -23,7 +23,9 @@ namespace GUI
     {
         List<DTO.ChiNhanh> listChiNhanh;
         DTO.ThanhVien thanhVien;
-        DTO.NhanVien nhanvien;
+        DTO.NhanVien nhanVien;
+        DTO.NhanVienQuanLy nhanVienQuanLy;
+
         private int typeUser;
         public MainWindow()
         {
@@ -56,12 +58,22 @@ namespace GUI
             this.thanhVien = result;
             customerName.Content = this.thanhVien.HoTen;
             customerPoint.Text = this.thanhVien.DiemTichLuy.ToString();
+            nameBranch.Text = this.thanhVien.MaChiNhanh.ToString();
         }
-        internal void setUserInfo2(DTO.NhanVien result)
+        internal void setUserInfo2(DTO.NhanVien result) // nhân viên 1 chi nhánh
         {
-            this.nhanvien = result;
-            memberName.Content = this.nhanvien.HoTen;
-            nameBranch.Text = this.nhanvien.MaChiNhanh.ToString();
+            this.nhanVien = result;
+            customerPoint.Text = null;
+            customerName.Content = this.nhanVien.HoTen;
+            nameBranch.Text = this.nhanVien.TenChiNhanh.ToString();
+
+        }
+        internal void setUserInfo3(DTO.NhanVienQuanLy result) // nhân viên toàn chi nhánh
+        {
+            this.nhanVienQuanLy = result;
+            customerPoint.Text = null;
+            customerName.Content = this.nhanVienQuanLy.HoTen;
+            nameBranch.Text = null;
         }
         private void loadChiNhanh(object sender, RoutedEventArgs e)
         {
@@ -92,9 +104,14 @@ namespace GUI
                 notLogin.Visibility = Visibility.Visible;
                 customerLogin.Visibility = Visibility.Collapsed;
             }
-            else if (this.typeUser == 2) // nhân viên
+            else if (this.typeUser == 2) // nhân viên 1 chi nhánh
             {
-                memberLogin.Visibility = Visibility.Visible;
+                customerLogin.Visibility = Visibility.Visible;
+                notLogin.Visibility = Visibility.Collapsed;
+            }
+            else if (this.typeUser == 3) // nhân viên toàn chi nhánh
+            {
+                customerLogin.Visibility = Visibility.Visible;
                 notLogin.Visibility = Visibility.Collapsed;
             }
         }

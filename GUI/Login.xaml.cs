@@ -38,7 +38,7 @@ namespace GUI
             string passWord = txtPassWord.Password;
 
             DTO.NhanVien result = BUS.NhanVien.GetNhanVien(userName, passWord);
-            // 
+          
             if (result != null)
             {
                 {
@@ -48,7 +48,7 @@ namespace GUI
                     window.Show();
                     this.Close();
                 }
-
+                
             }
             else
             {
@@ -64,15 +64,31 @@ namespace GUI
                     }
 
                 }
-                // DTO.ThanhVien result1 = BUS.ThanhVien.GetThanhVien(userName, passWord);
+                // 
                 else
-                    MessageBox.Show("Đăng nhập thất bại", "Thông báo", MessageBoxButton.OK);
+                { DTO.NhanVienQuanLy result3 = BUS.NhanVienQuanLy.GetNhanVienQuanLy(userName, passWord);
+                    // DTO.NhanVienQuanLy result3 = BUS.NhanVienQuanLy.GetNhanVienQuanLy
+                    if (result3 != null)
+                    {
+                        {
+                            var window = new MainWindow();
+                            window.setTypeUser(3);
+                            window.setUserInfo3(result3);
+                            window.Show();
+                            this.Close();
+                        }
+
+                    }
+                    else
+                        MessageBox.Show("Đăng nhập thất bại", "Thông báo", MessageBoxButton.OK);
+                }
+                
                 //  
 
                 //else
                 // {
-                // if (result != null)
-
+               // if (result != null)
+                                  
 
                 //         if (result1 == null)
                 //         {
