@@ -61,12 +61,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ChonDiaChi.xaml.cs">
+      <DependentUpon>ChonDiaChi.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DonHang.xaml.cs">
       <DependentUpon>DonHang.xaml</DependentUpon>
     </Compile>
     <Compile Include="ThucDon.xaml.cs">
       <DependentUpon>ThucDon.xaml</DependentUpon>
     </Compile>
+    <Page Include="ChonDiaChi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DonHang.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

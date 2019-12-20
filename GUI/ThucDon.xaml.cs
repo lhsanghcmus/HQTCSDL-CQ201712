@@ -73,5 +73,11 @@ namespace GUI
 
             countSelected.Content = "Đã chọn: " + count.ToString();
         }
+
+        private void CountSelected_Click(object sender, RoutedEventArgs e)
+        {
+            var datDonWindow = new DatDon();
+            datDonWindow.ShowDialog();
+        }
     }
 }
