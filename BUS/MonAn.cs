@@ -8,9 +8,9 @@ namespace BUS
 {
     public class MonAn
     {
-        public static List<DTO.MonAn> GetThucDon(int maChiNhanh, int offset, int limit)
+        public static DTO.MonAn[] GetThucDon(int maChiNhanh, int offset, int limit)
         {
-            return DAO.MonAn.GetThucDon(maChiNhanh, offset, limit);
+            return DAO.MonAn.GetThucDon(maChiNhanh, offset, limit).ToArray();
         }
     }
 }

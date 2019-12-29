@@ -20,8 +20,9 @@ namespace GUI
     /// </summary>
     public partial class ThucDon : Page
     {
-        private List<DTO.MonAn> listMonAn;
+        private DTO.MonAn[] listMonAn;
         private int count = 0;
+        private string baseString = "Đã chọn: ";
         public ThucDon()
         {
             InitializeComponent();
@@ -33,51 +34,66 @@ namespace GUI
         private void TangSoLuong(object sender, RoutedEventArgs e)
         {
             DTO.MonAn monAn = (DTO.MonAn)((Button)sender).DataContext;
-            int n = listMonAn.Count;
+            int n = listMonAn.Length;
             int index = 0;
-            for (int i=0;i<n;i++)
+          
+            for (int i = 0; i < n; i++)
             {
-                if (monAn == listMonAn[i])
+                if (monAn.MaMon == listMonAn[i].MaMon)
                 {
-                    index = i;
-                    break;
+                   index = i;
+                   break;
                 }
             }
+            
             listMonAn[index].SoLuongDuocChon++;
-            itemListView.ItemsSource = new List<DTO.MonAn>();
+
+            itemListView.ItemsSource = null;
             itemListView.ItemsSource = listMonAn;
+
             count++;
-            countSelected.Content = "Đã chọn: " + count.ToString();
+            countSelected.Content = baseString + count.ToString();
         }
 
         private void GiamSoLuong(object sender, RoutedEventArgs e)
         {
             DTO.MonAn monAn = (DTO.MonAn)((Button)sender).DataContext;
-            int n = listMonAn.Count;
+            int n = listMonAn.Length;
             int index = 0;
             for (int i = 0; i < n; i++)
             {
-                if (monAn == listMonAn[i])
+                if (monAn.MaMon == listMonAn[i].MaMon)
                 {
                     index = i;
                     break;
                 }
             }
+           
             if (listMonAn[index].SoLuongDuocChon > 0)
             {
                 listMonAn[index].SoLuongDuocChon--;
                 count--;
+                itemListView.ItemsSource = null;
+                itemListView.ItemsSource = listMonAn;
+                countSelected.Content = baseString + count.ToString();
             }
-            itemListView.ItemsSource = new List<DTO.MonAn>();
-            itemListView.ItemsSource = listMonAn;
-
-            countSelected.Content = "Đã chọn: " + count.ToString();
         }
 
         private void CountSelected_Click(object sender, RoutedEventArgs e)
         {
-            var datDonWindow = new DatDon();
-            datDonWindow.ShowDialog();
+            //var datDonWindow = new DatDon();
+            if (Global.ScreenMapping.ContainsKey("Chon Dia Chi"))
+            {
+                DatDon tmp = (DatDon)Global.ScreenMapping["Chon Dia Chi"];
+                tmp.ShowDialog();
+                
+            } else
+            {
+                DatDon tmp = new DatDon();
+                Global.ScreenMapping.Add("Chon Dia Chi", tmp);
+                tmp.ShowDialog();
+            }
+          //  datDonWindow.ShowDialog();
         }
     }
 }

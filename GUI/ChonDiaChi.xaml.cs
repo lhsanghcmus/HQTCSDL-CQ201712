@@ -22,6 +22,33 @@ namespace GUI
         public DatDon()
         {
             InitializeComponent();
+            chooseCity.IsEnabled = false;
+            chooseDistrict.IsEnabled = false;
+            chooseWard.IsEnabled = false;
+            //note.SelectTionS
+        }
+
+        private void ChooseType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = chooseType.SelectedIndex;
+            switch (index)
+            {
+                case 0:
+                    chooseCity.IsEnabled = false;
+                    chooseDistrict.IsEnabled = false;
+                    chooseWard.IsEnabled = false;
+                    break;
+                case 1:
+                    chooseCity.IsEnabled = true;
+                    chooseDistrict.IsEnabled = true;
+                    chooseWard.IsEnabled = true;
+                    break;
+            }
+        }
+
+        private void DongGiaoDien(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
         }
     }
 }

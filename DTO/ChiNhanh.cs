@@ -18,6 +18,7 @@ namespace DTO
         {
             maChiNhanh = 0;
             tenChiNhanh = "";
+            
         }
     }
 }

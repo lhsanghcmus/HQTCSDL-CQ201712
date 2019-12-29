@@ -25,13 +25,26 @@ namespace GUI
         DTO.ThanhVien thanhVien;
         DTO.NhanVien nhanVien;
         DTO.NhanVienQuanLy nhanVienQuanLy;
-
         private int typeUser;
         public MainWindow()
         {
             InitializeComponent();
             //this.FontFamily = new FontFamily("Montserrat");
             listChiNhanh = BUS.ChiNhanh.LoadDSChiNhanh();
+            if (Global.MaChiNhanh != 0)
+            {
+                int n = listChiNhanh.Count;
+                for (int i=0;i<n;i++)
+                {
+                    if (listChiNhanh[i].MaChiNhanh == Global.MaChiNhanh)
+                    {
+                        DTO.ChiNhanh tmp = listChiNhanh[i];
+                        listChiNhanh.Clear();
+                        listChiNhanh.Add(tmp);
+                        break;
+                    }
+                }
+            }
             typeUser = 0;
             setTypeUser(0);
         }
@@ -53,14 +66,14 @@ namespace GUI
             btnCloseMenu.Visibility = Visibility.Collapsed;
         }
 
-        internal void setUserInfo(DTO.ThanhVien result)
+        internal void setThanhVienInfo(DTO.ThanhVien result)
         {
             this.thanhVien = result;
             customerName.Content = this.thanhVien.HoTen;
             customerPoint.Text = this.thanhVien.DiemTichLuy.ToString();
             nameBranch.Text = this.thanhVien.MaChiNhanh.ToString();
         }
-        internal void setUserInfo2(DTO.NhanVien result) // nhân viên 1 chi nhánh
+        internal void setNhanVienInfo(DTO.NhanVien result) // nhân viên 1 chi nhánh
         {
             this.nhanVien = result;
             customerPoint.Text = null;
@@ -68,7 +81,7 @@ namespace GUI
             nameBranch.Text = this.nhanVien.TenChiNhanh.ToString();
 
         }
-        internal void setUserInfo3(DTO.NhanVienQuanLy result) // nhân viên toàn chi nhánh
+        internal void setQuanlyInfo(DTO.NhanVienQuanLy result) // nhân viên toàn chi nhánh
         {
             this.nhanVienQuanLy = result;
             customerPoint.Text = null;
@@ -114,6 +127,7 @@ namespace GUI
                 customerLogin.Visibility = Visibility.Visible;
                 notLogin.Visibility = Visibility.Collapsed;
             }
+            Global.LoaiUser = this.typeUser;
         }
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -121,10 +135,25 @@ namespace GUI
             int index = ListViewMenu.SelectedIndex;
             switch (index) {
                 case 0:
-                    GridPrincipal.Content = new ThucDon();
+                    if (Global.ScreenMapping.ContainsKey("Thuc Don"))
+                    {
+                        GridPrincipal.Content = Global.ScreenMapping["Thuc Don"];
+                    } else
+                    {
+                        Global.ScreenMapping.Add("Thuc Don", new ThucDon());
+                        GridPrincipal.Content = Global.ScreenMapping["Thuc Don"];
+                    }
                     break;
                 case 1:
-                    GridPrincipal.Content = new DonHang();
+                    if (Global.ScreenMapping.ContainsKey("Don Hang"))
+                    {
+                        GridPrincipal.Content = Global.ScreenMapping["Don Hang"];
+                    }
+                    else
+                    {
+                        Global.ScreenMapping.Add("Don Hang", new DonHang());
+                        GridPrincipal.Content = Global.ScreenMapping["Don Hang"];
+                    }
                     break;
             }
         }

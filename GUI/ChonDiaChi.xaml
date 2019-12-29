@@ -11,131 +11,143 @@
          TextElement.FontSize="13"
          TextOptions.TextFormattingMode="Ideal"
          TextOptions.TextRenderingMode="Auto"
-         Background="{DynamicResource MaterialDesignPaper}"
+         Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"
          FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Chọn địa chỉ" Height="432.09" Width="338">
+        Title="Chọn địa chỉ" Height="447.129" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Width="318.952">
     <Grid Background="#fff">
-        <StackPanel>
-            <Grid Height="40" VerticalAlignment="Top" Background="LightGray">
-                <StackPanel Width="350" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
-                    <Label Margin="0 5 0 0">Chọn hình thức</Label>
-                    <ComboBox Width="165" Margin="25 0 0 0"
-  materialDesign:HintAssist.Hint="Thưởng thức tại nhà hàng">
-                        <ComboBoxItem>
-                            Thưởng thức tại nhà hàng
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            Mang đi
-                        </ComboBoxItem>
-                    </ComboBox>
-                </StackPanel>
-            </Grid>
-            <Grid>
-                <StackPanel>
-                    <Grid Height="50">
-                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center">
-                            <Label Margin="0 5 0 0">Chọn thành phố</Label>
-                            <ComboBox Width="165" Margin="20 0 0 0"
-  materialDesign:HintAssist.Hint="Thành phố HCM">
-                                <ComboBoxItem>
-                                    Thành phố HCM
-                                </ComboBoxItem>
-                            </ComboBox>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Height="50">
-                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center">
-                            <Label Margin="0 5 0 0">Chọn quận</Label>
-                            <ComboBox Width="165" Margin="50 0 0 0"
+        <GroupBox Header="Xác nhận địa chỉ">
+            <StackPanel>
+                <Grid Height="40" VerticalAlignment="Top" >
+                    <StackPanel Width="350" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                        <Label Margin="0 5 0 0">Chọn hình thức</Label>
+                        <ComboBox x:Name="chooseType" Width="165" Margin="25 0 0 0"
+  materialDesign:HintAssist.Hint="Thưởng thức tại nhà hàng" SelectionChanged="ChooseType_SelectionChanged">
+                            <ComboBoxItem>
+                                Thưởng thức tại nhà hàng
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Mang đi
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                </Grid>
+                <Grid>
+                    <StackPanel>
+                        <Grid Height="50">
+                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center">
+                                <Label Margin="0 5 0 0">Chọn thành phố</Label>
+                                <ComboBox x:Name="chooseCity" Width="165" Margin="20 0 0 0"
+  materialDesign:HintAssist.Hint="Thành phố HCM" >
+                                    <ComboBoxItem>
+                                        Thành phố HCM
+                                    </ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Height="50">
+                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center">
+                                <Label Margin="0 5 0 0">Chọn quận</Label>
+                                <ComboBox x:Name="chooseDistrict" Width="165" Margin="50 0 0 0"
   materialDesign:HintAssist.Hint="Quận Bình Thạnh">
-                                <ComboBoxItem>
-                                    Quận 1
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận 2
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận 3
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận 4
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận 5
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận 6
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận 7
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận 8
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận 9
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận 10
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận 11
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận 12
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận Bình Tân
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận Bình Thạnh
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận Gò Vấp
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận Phú Nhuận
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận Tân Bình
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận Tân Phú
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Quận Thủ Đức
-                                </ComboBoxItem>
-                            </ComboBox>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Height="50">
-                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center">
-                            <Label Margin="0 5 0 0">Chọn phường</Label>
-                            <ComboBox Width="165" Margin="34 0 0 0"
+                                    <ComboBoxItem>
+                                        Quận 1
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận 2
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận 3
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận 4
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận 5
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận 6
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận 7
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận 8
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận 9
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận 10
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận 11
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận 12
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận Bình Tân
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận Bình Thạnh
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận Gò Vấp
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận Phú Nhuận
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận Tân Bình
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận Tân Phú
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Quận Thủ Đức
+                                    </ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Height="50">
+                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center">
+                                <Label Margin="0 5 0 0">Chọn phường</Label>
+                                <ComboBox x:Name="chooseWard" Width="165" Margin="34 0 0 0"
   materialDesign:HintAssist.Hint="Chọn phường">
-                                <ComboBoxItem>
-                                    
-                                </ComboBoxItem>
-                            </ComboBox>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Height="140" Margin="0 10 0 0">
-                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
-                            <Label>Nhập tên đường / số nhà</Label>
-                            <Border Margin="2 0 2 0" Height="100" BorderBrush="#ddd" BorderThickness="1" CornerRadius="5">
-                                <RichTextBox Height="100">
+                                    <ComboBoxItem>
+                                        Phường 1
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Phường 2
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Phường 3
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Phường 4
+                                    </ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Height="140" Margin="0 10 0 0">
+                            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                                <Label>Nhập tên đường / số nhà</Label>
+                                <Border Margin="2 0 2 0" Height="100" BorderBrush="#ddd" BorderThickness="1" CornerRadius="5">
+                                    <RichTextBox x:Name="note" Height="100" Cursor="IBeam">
 
-                                </RichTextBox>
-                            </Border>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Height="50">
-                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
-                            <Button>Xác nhận</Button>
-                        </StackPanel>
-                    </Grid>
-                </StackPanel>
-            </Grid>
-        </StackPanel>
+                                    </RichTextBox>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Height="50">
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
+                                <Button Width="90">Xác nhận</Button>
+                                <Button Width="90" Margin="10 0 0 0" Background="Red" BorderBrush="Red" Click="DongGiaoDien">Hủy</Button>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </Window>

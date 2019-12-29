@@ -37,73 +37,46 @@ namespace GUI
             string userName = txtUser.Text;
             string passWord = txtPassWord.Password;
 
-            DTO.NhanVien result = BUS.NhanVien.GetNhanVien(userName, passWord);
+            DTO.NhanVien NhanVienData = BUS.NhanVien.GetNhanVien(userName, passWord);
           
-            if (result != null)
+            if (NhanVienData != null)
             {
-                {
-                    var window = new MainWindow();
-                    window.setTypeUser(2);
-                    window.setUserInfo2(result);
-                    window.Show();
-                    this.Close();
-                }
-                
+                Global.MaChiNhanh = NhanVienData.MaChiNhanh;
+                 var window = new MainWindow();
+                 window.setTypeUser(2);
+                 window.setNhanVienInfo(NhanVienData);
+                 window.Show();
+                 this.Close();   
             }
             else
             {
-                DTO.ThanhVien result1 = BUS.ThanhVien.GetThanhVien(userName, passWord);
-                if (result1 != null)
+                DTO.ThanhVien ThanhVienData = BUS.ThanhVien.GetThanhVien(userName, passWord);
+                if (ThanhVienData != null)
                 {
-                    {
-                        var window = new MainWindow();
-                        window.setTypeUser(1);
-                        window.setUserInfo(result1);
-                        window.Show();
-                        this.Close();
-                    }
-
+                    var window = new MainWindow();
+                    window.setTypeUser(1);
+                    window.setThanhVienInfo(ThanhVienData);
+                    window.Show();
+                    this.Close();
                 }
-                // 
                 else
-                { DTO.NhanVienQuanLy result3 = BUS.NhanVienQuanLy.GetNhanVienQuanLy(userName, passWord);
-                    // DTO.NhanVienQuanLy result3 = BUS.NhanVienQuanLy.GetNhanVienQuanLy
-                    if (result3 != null)
+                {
+                    DTO.NhanVienQuanLy NhanVienQuanLyData = BUS.NhanVienQuanLy.GetNhanVienQuanLy(userName, passWord);
+                    if (NhanVienQuanLyData != null)
                     {
-                        {
-                            var window = new MainWindow();
-                            window.setTypeUser(3);
-                            window.setUserInfo3(result3);
-                            window.Show();
-                            this.Close();
-                        }
-
+                        Global.MaChiNhanh = 0;
+                       var window = new MainWindow();
+                       window.setTypeUser(3);
+                       window.setQuanlyInfo(NhanVienQuanLyData);
+                       window.Show();
+                       this.Close();
                     }
                     else
+                    {
                         MessageBox.Show("Đăng nhập thất bại", "Thông báo", MessageBoxButton.OK);
+                    }
                 }
-                
-                //  
-
-                //else
-                // {
-               // if (result != null)
-                                  
-
-                //         if (result1 == null)
-                //         {
-                //             MessageBox.Show("Đăng nhập thất bại", "Thông báo", MessageBoxButton.OK);
-                //         }
-                //         else
-                //         {
-                //             
-                //         }
-
-                // }
-
             }
-
-
         }
     }
 }
