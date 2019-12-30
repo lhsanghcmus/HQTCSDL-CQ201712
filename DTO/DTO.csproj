@@ -60,6 +60,8 @@
     <Compile Include="NhanVien.cs" />
     <Compile Include="NhanVienQuanLy.cs" />
     <Compile Include="ThanhVien.cs" />
+    <Compile Include="ThongTinThanhToan.cs" />
+    <Compile Include="ThongTinTien.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

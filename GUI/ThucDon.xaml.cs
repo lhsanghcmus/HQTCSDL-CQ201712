@@ -79,18 +79,36 @@ namespace GUI
             }
         }
 
+        public DTO.MonAn[] GetMonAnDuocChon()
+        {
+            int n = listMonAn.Length;
+            List<DTO.MonAn> result = new List<DTO.MonAn>();
+            for (int i=0;i<n;i++)
+            {
+                if (listMonAn[i].SoLuongDuocChon > 0)
+                {
+                    result.Add(listMonAn[i]);
+                }
+            }
+            return result.ToArray();
+        }
+
         private void CountSelected_Click(object sender, RoutedEventArgs e)
         {
             //var datDonWindow = new DatDon();
             if (Global.ScreenMapping.ContainsKey("Chon Dia Chi"))
             {
-                DatDon tmp = (DatDon)Global.ScreenMapping["Chon Dia Chi"];
+                ChonDiaChi tmp = (ChonDiaChi)Global.ScreenMapping["Chon Dia Chi"];
+                DTO.MonAn[] ListMonAnDuocChon = GetMonAnDuocChon();
+                tmp.listMonAnDuocChon = ListMonAnDuocChon;
                 tmp.ShowDialog();
                 
             } else
             {
-                DatDon tmp = new DatDon();
+                ChonDiaChi tmp = new ChonDiaChi();
                 Global.ScreenMapping.Add("Chon Dia Chi", tmp);
+                DTO.MonAn[] ListMonAnDuocChon = GetMonAnDuocChon();
+                tmp.listMonAnDuocChon = ListMonAnDuocChon;
                 tmp.ShowDialog();
             }
           //  datDonWindow.ShowDialog();

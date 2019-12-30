@@ -17,6 +17,7 @@ namespace DTO
         private int soLuong;
         private BitmapImage hinhAnh;
         private int soLuongDuocChon;
+        private double tongTien;
 
         public int MaMon { get => maMon; set => maMon = value; }
         public string TenMon { get => tenMon; set => tenMon = value; }
@@ -25,6 +26,7 @@ namespace DTO
         public int SoLuong { get => soLuong; set => soLuong = value; }
         public BitmapImage HinhAnh { get => hinhAnh; set => hinhAnh = value; }
         public int SoLuongDuocChon { get => soLuongDuocChon; set => soLuongDuocChon = value; }
+        public double TongTien { get => tongTien; set => tongTien = value; }
 
         public static BitmapImage BitmapImageFromBytes(byte[] bytes)
         {
@@ -57,6 +59,7 @@ namespace DTO
             MaMon = MaLoai = SoLuong = SoLuongDuocChon = 0;
             TenMon = "";
             DonGia = 0;
+            TongTien = 0;
         }
     }
 }

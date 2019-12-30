@@ -97,6 +97,8 @@ namespace GUI
         private void CmbChiNhanh_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
            // MessageBox.Show(listChiNhanh[cmbChiNhanh.SelectedIndex].MaChiNhanh.ToString());
+            //Global.MaChiNhanh =
+            Global.MaChiNhanh = int.Parse(listChiNhanh[cmbChiNhanh.SelectedIndex].MaChiNhanh.ToString());
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)

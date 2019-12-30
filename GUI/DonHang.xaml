@@ -9,6 +9,8 @@
       Title="DonHang">
 
     <Grid>
-        <Label>Đây là màn hình đơn hàng</Label>
+        <ListView>
+            <ListViewItem></ListViewItem>
+        </ListView>
     </Grid>
 </Page>

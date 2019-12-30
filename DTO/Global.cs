@@ -11,5 +11,6 @@ namespace DTO
         public static int MaChiNhanh = 0;
         public static int LoaiUser = 0;
         public static Dictionary<string, object> ScreenMapping = new Dictionary<string, object>();
+        public static ThanhVien ThanhVien = null;
     }
 }

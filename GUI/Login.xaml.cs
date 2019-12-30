@@ -56,6 +56,7 @@ namespace GUI
                     var window = new MainWindow();
                     window.setTypeUser(1);
                     window.setThanhVienInfo(ThanhVienData);
+                    Global.ThanhVien = ThanhVienData;
                     window.Show();
                     this.Close();
                 }

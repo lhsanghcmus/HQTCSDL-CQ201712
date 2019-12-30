@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    //nhi xinh dep va huyen xinh dep hihi
+    
 
     public class DataProvider
     {
