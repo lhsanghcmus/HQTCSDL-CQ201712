@@ -61,11 +61,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CapNhatTrangThai.xaml.cs">
+      <DependentUpon>CapNhatTrangThai.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ChonDiaChi.xaml.cs">
       <DependentUpon>ChonDiaChi.xaml</DependentUpon>
     </Compile>
     <Compile Include="DonHang.xaml.cs">
       <DependentUpon>DonHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HuyDon.xaml.cs">
+      <DependentUpon>HuyDon.xaml</DependentUpon>
     </Compile>
     <Compile Include="ThucDon.xaml.cs">
       <DependentUpon>ThucDon.xaml</DependentUpon>
@@ -73,11 +79,19 @@
     <Compile Include="TinhTien.xaml.cs">
       <DependentUpon>TinhTien.xaml</DependentUpon>
     </Compile>
+    <Page Include="CapNhatTrangThai.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ChonDiaChi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DonHang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HuyDon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

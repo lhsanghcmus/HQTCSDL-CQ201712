@@ -21,6 +21,7 @@ namespace DTO
         private int hinhThuc;
         private int loai;
         private string maKhuyenMai;
+        
 
         public DTO.MonAn[] ListMonAnDuocChon { get => listMonAnDuocChon; set => listMonAnDuocChon = value; }
         public string TenDuong { get => tenDuong; set => tenDuong = value; }
@@ -35,7 +36,7 @@ namespace DTO
         public int Loai { get => loai; set => loai = value; }
         public string MaKhuyenMai { get => maKhuyenMai; set => maKhuyenMai = value; }
         public string TenQuan { get => tenQuan; set => tenQuan = value; }
-
+       
         public ThongTinThanhToan()
         {
             ListMonAnDuocChon = null;

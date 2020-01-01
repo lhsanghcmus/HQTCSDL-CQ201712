@@ -1,0 +1,60 @@
+﻿<Window x:Class="GUI.CapNhatTrangThai"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+        
+         FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Cập nhật trạng thái đơn hàng" Height="210" Width="310" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <StackPanel>
+        <StackPanel Background="#415bb7" Height="30" VerticalAlignment="Top">
+            <Grid Height="30"  VerticalAlignment="Top" >
+                <TextBlock VerticalAlignment="Center" Foreground="#fff" Margin="3 0 0 0">Cập nhật trạng thái đơn hàng</TextBlock>
+                <Button Width="50" Height="20" Margin="0 0 3 0"  Background="#e74c3c" BorderBrush="#e74c3c" BorderThickness="0" HorizontalAlignment="Right" Click="HuyThaoTac_Click">
+                    <Button.Content>
+                        <materialDesign:PackIcon Kind="Close" VerticalAlignment="Center"/>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </StackPanel>
+        <Border Height="180" BorderBrush="#415bb7" BorderThickness="1 0 1 1">
+            <StackPanel x:Name="orderData" Margin="0 5 0 0">
+                <StackPanel Orientation="Horizontal">
+                        <Label>Mã đơn hàng:</Label>
+                        <Label x:Name="txtMaDonHang" Margin="6 0 0 0" Width="205" ></Label>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Tổng tiền:</Label>
+                        <Label x:Name="txtTongTien" Margin="29 0 0 0" Width="205"></Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Trạng thái:</Label>
+                        <Label x:Name="txtTrangThai" Margin="25 0 0 0" Width="205"></Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Trạng thái mới:</Label>
+                        <ComboBox x:Name="chooseStatus" Margin="0 0 0 0" Width="205">
+                            <ComboBoxItem IsSelected="True">Tiếp nhận</ComboBoxItem>
+                            <ComboBoxItem>Đang chuẩn bị</ComboBoxItem>
+                            <ComboBoxItem>Đang giao</ComboBoxItem>
+                            <ComboBoxItem>Hoàn tất</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Margin="0 20 0 0" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Button Width="90" Click="CapNhat_Click">Xác nhận</Button>
+                        <Button Width="90" Margin="10 0 0 0" Background="Red" BorderBrush="Red" Click="HuyThaoTac_Click">Hủy</Button>
+                    </StackPanel>
+             
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</Window>

@@ -42,22 +42,80 @@ namespace GUI
             if (NhanVienData != null)
             {
                 Global.MaChiNhanh = NhanVienData.MaChiNhanh;
-                 var window = new MainWindow();
-                 window.setTypeUser(2);
-                 window.setNhanVienInfo(NhanVienData);
-                 window.Show();
-                 this.Close();   
+                Global.NhanVien = NhanVienData;
+                Global.ThanhVien = null;
+                Global.NhanVienQuanLy = null;
+
+                if (Global.ScreenMapping.ContainsKey("Chon Dia Chi"))
+                {
+                    ChonDiaChi tmp = (ChonDiaChi)Global.ScreenMapping["Chon Dia Chi"];
+                    tmp.loadDataUser();
+                }
+                else
+                {
+                    ChonDiaChi tmp = new ChonDiaChi();
+                    tmp.loadDataUser();
+                    Global.ScreenMapping.Add("Chon Dia Chi", tmp);
+                }
+
+                if (Global.ScreenMapping.ContainsKey("Main Window"))
+                {
+                    MainWindow window = (MainWindow)Global.ScreenMapping["Main Window"];
+                    window.reloadData();
+                    window.setTypeUser(2);
+                    window.setNhanVienInfo(NhanVienData);
+                    window.Show();
+                    this.Close();
+                } else
+                {
+                    MainWindow window = new MainWindow();
+                    window.setTypeUser(2);
+                    window.setNhanVienInfo(NhanVienData);
+                    Global.ScreenMapping.Add("Main Window", window);
+                    window.Show();
+                    this.Close();
+                }
+                
             }
             else
             {
                 DTO.ThanhVien ThanhVienData = BUS.ThanhVien.GetThanhVien(userName, passWord);
                 if (ThanhVienData != null)
                 {
-                    var window = new MainWindow();
-                    window.setTypeUser(1);
-                    window.setThanhVienInfo(ThanhVienData);
+                    Global.MaChiNhanh = 0;
                     Global.ThanhVien = ThanhVienData;
-                    window.Show();
+                    Global.NhanVien = null;
+                    Global.NhanVienQuanLy = null;
+                    if (Global.ScreenMapping.ContainsKey("Chon Dia Chi"))
+                    {
+                        ChonDiaChi tmp = (ChonDiaChi)Global.ScreenMapping["Chon Dia Chi"];
+                        tmp.loadDataUser();
+                    } else
+                    {
+                        ChonDiaChi tmp = new ChonDiaChi();
+                        tmp.loadDataUser();
+                        Global.ScreenMapping.Add("Chon Dia Chi", tmp);
+                    }
+                    
+                    if (Global.ScreenMapping.ContainsKey("Main Window"))
+                    {
+                        MainWindow window = (MainWindow)Global.ScreenMapping["Main Window"];
+                        window.reloadData();
+                        window.setTypeUser(1);
+                        window.setThanhVienInfo(ThanhVienData);
+                        window.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MainWindow window = new MainWindow();
+                        window.setTypeUser(1);
+                        window.setThanhVienInfo(ThanhVienData);
+                        Global.ScreenMapping.Add("Main Window", window);
+                        window.Show();
+                        this.Close();
+                    }
+
                     this.Close();
                 }
                 else
@@ -66,11 +124,31 @@ namespace GUI
                     if (NhanVienQuanLyData != null)
                     {
                         Global.MaChiNhanh = 0;
-                       var window = new MainWindow();
-                       window.setTypeUser(3);
-                       window.setQuanlyInfo(NhanVienQuanLyData);
-                       window.Show();
-                       this.Close();
+                        Global.NhanVienQuanLy = NhanVienQuanLyData;
+                        Global.NhanVien = null;
+                        Global.ThanhVien = null;
+                      
+
+                        if (Global.ScreenMapping.ContainsKey("Main Window"))
+                        {
+                            MainWindow window = (MainWindow)Global.ScreenMapping["Main Window"];
+                            window.reloadData();
+                            window.setTypeUser(3);
+                            window.setQuanlyInfo(NhanVienQuanLyData);
+                            window.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MainWindow window = new MainWindow();
+                            window.setTypeUser(3);
+                            window.setQuanlyInfo(NhanVienQuanLyData);
+                            Global.ScreenMapping.Add("Main Window", window);
+                            window.Show();
+                            this.Close();
+                        }
+
+                        
                     }
                     else
                     {

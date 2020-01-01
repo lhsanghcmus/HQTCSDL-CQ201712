@@ -12,5 +12,13 @@ namespace BUS
         {
             return DAO.Action.DatMon(info);
         }
+        public static DTO.ThongTinDonHang[] GetDanhSachDonHang(int Code)
+        {
+            return DAO.Action.GetDanhSachDonHang(Code);
+        }
+        public static int HuyDonHang(int MaDonHang)
+        {
+            return DAO.Action.HuyDonHang(MaDonHang);
+        }
     }
 }

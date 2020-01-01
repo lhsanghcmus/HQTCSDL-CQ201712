@@ -61,7 +61,18 @@ namespace GUI
             int MaLoi = BUS.Action.DatMon(ThongTinTien);
             if (MaLoi == 0)
             {
-                MessageBox.Show("Thành công");
+                MessageBox.Show("Đặt món thành công","Thông báo",MessageBoxButton.OK);
+                ChonDiaChi tmp = (ChonDiaChi)DTO.Global.ScreenMapping["Chon Dia Chi"];
+                tmp.listMonAnDuocChon = null;
+                this.ListMonAnDuocChon = null;
+                this.ThongTinThanhToan = null;
+                this.ThongTinTien = null;
+
+                ThucDon t = (ThucDon)DTO.Global.ScreenMapping["Thuc Don"];
+                t.resetData();
+
+                tmp.Visibility = Visibility.Hidden;
+                this.Visibility = Visibility.Hidden;
             } else
             {
                 MessageBox.Show("Lỗi: " + MaLoi.ToString());

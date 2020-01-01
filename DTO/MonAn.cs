@@ -61,5 +61,12 @@ namespace DTO
             DonGia = 0;
             TongTien = 0;
         }
+        public MonAn Clone()
+        {
+            MonAn t = new MonAn();
+            t.soLuong = this.soLuong;
+            t.SoLuongDuocChon = this.SoLuongDuocChon;
+            return t;
+        }
     }
 }

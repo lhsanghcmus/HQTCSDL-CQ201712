@@ -34,9 +34,9 @@
                             <StackPanel Width="350" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
                                 <Label Margin="0 5 0 0">Chọn hình thức</Label>
                                 <ComboBox x:Name="chooseType" Width="165" Margin="25 0 0 0"
-      materialDesign:HintAssist.Hint="Thưởng thức tại nhà hàng" SelectionChanged="ChooseType_SelectionChanged">
+      materialDesign:HintAssist.Hint="Chọn hình thức" SelectedIndex="0" SelectionChanged="ChooseType_SelectionChanged">
                                     <ComboBoxItem>
-                                        Thưởng thức tại nhà hàng
+                                        Thương thức tại nhà hàng
                                     </ComboBoxItem>
                                     <ComboBoxItem>
                                         Online
@@ -53,18 +53,19 @@
                                     <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center">
                                         <Label Margin="0 5 0 0">Chọn thành phố</Label>
                                         <ComboBox x:Name="chooseCity" Width="165" Margin="20 0 0 0"
-      materialDesign:HintAssist.Hint="Thành phố HCM" SelectedIndex="0">
+      materialDesign:HintAssist.Hint="Thành phố HCM" SelectedIndex="0" Visibility="Visible">
                                             <ComboBoxItem>
                                                 Thành phố HCM
                                             </ComboBoxItem>
                                         </ComboBox>
+                                        <TextBox x:Name="txtTenThanhPho"  Width="165" Margin="20 0 0 0" Visibility="Collapsed"></TextBox>
                                     </StackPanel>
                                 </Grid>
                                 <Grid Height="50">
                                     <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center">
                                         <Label Margin="0 5 0 0">Chọn quận</Label>
                                         <ComboBox x:Name="chooseDistrict" Width="165" Margin="50 0 0 0"
-      materialDesign:HintAssist.Hint="Quận Bình Thạnh" SelectedIndex="0">
+      materialDesign:HintAssist.Hint="Chọn quận" SelectedIndex="0" Visibility="Visible">
                                             <ComboBoxItem>
                                                 Quận 1
                                             </ComboBoxItem>
@@ -123,13 +124,14 @@
                                                 Quận Thủ Đức
                                             </ComboBoxItem>
                                         </ComboBox>
+                                        <TextBox x:Name="txtTenQuan"  Width="165" Margin="50 0 0 0" Visibility="Collapsed"></TextBox>
                                     </StackPanel>
                                 </Grid>
                                 <Grid Height="50">
                                     <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center">
                                         <Label Margin="0 5 0 0">Chọn phường</Label>
                                         <ComboBox x:Name="chooseWard" Width="165" Margin="34 0 0 0"
-      materialDesign:HintAssist.Hint="Chọn phường" SelectedIndex="0">
+      materialDesign:HintAssist.Hint="Chọn phường" SelectedIndex="0" Visibility="Visible">
                                             <ComboBoxItem>
                                                 Phường 1
                                             </ComboBoxItem>
@@ -143,6 +145,7 @@
                                                 Phường 4
                                             </ComboBoxItem>
                                         </ComboBox>
+                                        <TextBox x:Name="txtTenPhuong"  Width="165" Margin="33 0 0 0" Visibility="Collapsed"></TextBox>
                                     </StackPanel>
                                 </Grid>
                                 <Grid Height="140" Margin="0 10 0 0">

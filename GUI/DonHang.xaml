@@ -9,8 +9,58 @@
       Title="DonHang">
 
     <Grid>
-        <ListView>
-            <ListViewItem></ListViewItem>
-        </ListView>
+        <StackPanel>
+            <StackPanel>
+                <Label FontSize="18" FontWeight="Bold">Danh sách đơn hàng:</Label>
+            </StackPanel>
+            <StackPanel>
+                <ListView x:Name="listViewDonHang" Height="420" Loaded="ListViewDonHang_Loaded" SelectionChanged="ListViewDonHang_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Mã ĐH" Width="75">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding MaDonHang}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Địa chỉ đặt" Width="150">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding DiaChiDat}"></TextBlock>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Địa chỉ nhận" Width="250">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding DiaChiNhan}"></Label>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Tên người đặt" Width="115" DisplayMemberBinding="{Binding TenNguoiDat}">
+                                
+                            </GridViewColumn>
+                            <GridViewColumn Header="Tên người nhận" Width="125" DisplayMemberBinding="{Binding TenNguoiNhan}"></GridViewColumn>
+                            <GridViewColumn Header="SĐT liên lạc" Width="100" DisplayMemberBinding="{Binding SdtLienLac}"></GridViewColumn>
+                            <GridViewColumn Header="Tổng tiền" Width="90">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding TongTien}" Foreground="Red"></Label>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Trạng thái" Width="95">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding TrangThai}" Foreground="{Binding ColorStatus}"></Label>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

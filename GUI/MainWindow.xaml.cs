@@ -39,6 +39,7 @@ namespace GUI
                     if (listChiNhanh[i].MaChiNhanh == Global.MaChiNhanh)
                     {
                         DTO.ChiNhanh tmp = listChiNhanh[i];
+                        Global.ChiNhanh = tmp;
                         listChiNhanh.Clear();
                         listChiNhanh.Add(tmp);
                         break;
@@ -47,6 +48,26 @@ namespace GUI
             }
             typeUser = 0;
             setTypeUser(0);
+        }
+
+        public void reloadData()
+        {
+            listChiNhanh = BUS.ChiNhanh.LoadDSChiNhanh();
+            if (Global.MaChiNhanh != 0)
+            {
+                int n = listChiNhanh.Count;
+                for (int i = 0; i < n; i++)
+                {
+                    if (listChiNhanh[i].MaChiNhanh == Global.MaChiNhanh)
+                    {
+                        DTO.ChiNhanh tmp = listChiNhanh[i];
+                        Global.ChiNhanh = tmp;
+                        listChiNhanh.Clear();
+                        listChiNhanh.Add(tmp);
+                        break;
+                    }
+                }
+            }
         }
 
         private void BtnLogout_Click(object sender, RoutedEventArgs e)
@@ -71,7 +92,7 @@ namespace GUI
             this.thanhVien = result;
             customerName.Content = this.thanhVien.HoTen;
             customerPoint.Text = this.thanhVien.DiemTichLuy.ToString();
-            nameBranch.Text = this.thanhVien.MaChiNhanh.ToString();
+            nameBranch.Text = null;
         }
         internal void setNhanVienInfo(DTO.NhanVien result) // nhân viên 1 chi nhánh
         {
@@ -99,6 +120,24 @@ namespace GUI
            // MessageBox.Show(listChiNhanh[cmbChiNhanh.SelectedIndex].MaChiNhanh.ToString());
             //Global.MaChiNhanh =
             Global.MaChiNhanh = int.Parse(listChiNhanh[cmbChiNhanh.SelectedIndex].MaChiNhanh.ToString());
+            Global.ChiNhanh = listChiNhanh[cmbChiNhanh.SelectedIndex];
+            if (Global.ScreenMapping.ContainsKey("Chon Dia Chi"))
+            {
+                ChonDiaChi t = (ChonDiaChi)Global.ScreenMapping["Chon Dia Chi"];
+                t.loadDataUser();
+                t.listMonAnDuocChon = null;
+            } else
+            {
+                ChonDiaChi t = new ChonDiaChi();
+                t.listMonAnDuocChon = null;
+                t.loadDataUser();
+                Global.ScreenMapping.Add("Chon Dia Chi", t);
+            }
+            if (Global.ScreenMapping.ContainsKey("Thuc Don"))
+            {
+                ThucDon t = (ThucDon)Global.ScreenMapping["Thuc Don"];
+                t.resetData();
+            }
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)

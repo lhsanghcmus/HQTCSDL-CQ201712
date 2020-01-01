@@ -26,6 +26,10 @@ namespace DAO
                 DTO.ChiNhanh chiNhanh = new DTO.ChiNhanh();
                 chiNhanh.MaChiNhanh = int.Parse((reader["MaChiNhanh"].ToString()));
                 chiNhanh.TenChiNhanh = reader["TenChiNhanh"].ToString();
+                chiNhanh.TenDuong = reader["TenDuong"].ToString();
+                chiNhanh.TenPhuong = reader["TenPhuong"].ToString();
+                chiNhanh.TenQuan = reader["TenQuan"].ToString();
+                chiNhanh.TenThanhPho = reader["TenThanhPho"].ToString();
                 result.Add(chiNhanh);
             }
             DataProvider.CloseConnection(con);
