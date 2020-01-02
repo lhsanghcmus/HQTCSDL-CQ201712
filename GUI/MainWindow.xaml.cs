@@ -256,6 +256,16 @@ namespace GUI
                         GridPrincipal.Content = Global.ScreenMapping["Cap Nhat Thuc Don"];
                     }
                     break;
+                case 3:
+                    if (Global.ScreenMapping.ContainsKey("Quan Ly Loi"))
+                    {
+                        GridPrincipal.Content = Global.ScreenMapping["Quan Ly Loi"];
+                    } else
+                    {
+                        Global.ScreenMapping.Add("Quan Ly Loi", new QuanLyLoi());
+                        GridPrincipal.Content = Global.ScreenMapping["Quan Ly Loi"];
+                    }
+                    break;
             }
         }
 

@@ -76,6 +76,9 @@
     <Compile Include="HuyDon.xaml.cs">
       <DependentUpon>HuyDon.xaml</DependentUpon>
     </Compile>
+    <Compile Include="QuanLyLoi.xaml.cs">
+      <DependentUpon>QuanLyLoi.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ThemMonAnMoi.xaml.cs">
       <DependentUpon>ThemMonAnMoi.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="QuanLyLoi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ThemMonAnMoi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

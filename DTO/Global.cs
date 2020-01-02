@@ -22,5 +22,9 @@ namespace DTO
         public static DTO.MonAn[] DanhSachMonAn = null;
         public static List<int> DonHangDaDat = new List<int>();
         public static List<int> DonHangNhap = new List<int>();
+
+        public static bool fixTruySuatDongThoi = false;
+        public static bool fixDeadlock = false;
+
     }
 }
