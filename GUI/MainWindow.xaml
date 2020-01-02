@@ -63,9 +63,11 @@
                             </StackPanel>
                             <Separator></Separator>
                             <Button x:Name="btnLogout" FontFamily="Montserrat" Content="Đăng xuất" Click="BtnLogout_Click"></Button>
+                            <Button x:Name="btnExit" FontFamily="Montserrat" Content="Thoát" Click="BtnExit_Click"></Button>
                         </StackPanel>
                         <StackPanel x:Name="notLogin" >
                             <Button Content="Đăng nhập" FontFamily="Montserrat" Click="btnLogin_Click"></Button>
+                            <Button FontFamily="Montserrat" Content="Thoát" Click="BtnExit_Click"></Button>
                         </StackPanel>
                     </StackPanel>
 
@@ -116,6 +118,12 @@
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Margin="10" Kind="LibraryBooks" Width="25" Height="25" VerticalAlignment="Center"></materialDesign:PackIcon>
                             <TextBlock Text="Quản lý đơn hàng" FontFamily="Montserrat" VerticalAlignment="Center" Margin="20 10"></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem  x:Name="ft_CapNhatThucDon" Visibility="Collapsed" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Margin="10" Kind="Update" Width="25" Height="25" VerticalAlignment="Center"></materialDesign:PackIcon>
+                            <TextBlock Text="Cập nhật thực đơn" FontFamily="Montserrat" VerticalAlignment="Center" Margin="20 10"></TextBlock>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>

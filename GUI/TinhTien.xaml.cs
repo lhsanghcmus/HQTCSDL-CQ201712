@@ -46,6 +46,7 @@ namespace GUI
             txtPhiVanChuyen.Text = ThongTinTien.PhiVanChuyen.ToString();
             txtTongTamTinh.Text = ThongTinTien.TongTamTinh.ToString();
             txtTongTien.Text = ThongTinTien.TongTien.ToString();
+            DTO.Global.DonHangNhap.Add(ThongTinTien.MaDonCuoiCung);
         }
 
         private void CancelOrder_Click(object sender, RoutedEventArgs e)
@@ -62,12 +63,14 @@ namespace GUI
             if (MaLoi == 0)
             {
                 MessageBox.Show("Đặt món thành công","Thông báo",MessageBoxButton.OK);
+                DTO.Global.DonHangNhap.Remove(ThongTinTien.MaDonCuoiCung);
+                DTO.Global.DonHangDaDat.Add(ThongTinTien.MaDonCuoiCung);
                 ChonDiaChi tmp = (ChonDiaChi)DTO.Global.ScreenMapping["Chon Dia Chi"];
                 tmp.listMonAnDuocChon = null;
                 this.ListMonAnDuocChon = null;
                 this.ThongTinThanhToan = null;
                 this.ThongTinTien = null;
-
+                GC.Collect();
                 ThucDon t = (ThucDon)DTO.Global.ScreenMapping["Thuc Don"];
                 t.resetData();
 

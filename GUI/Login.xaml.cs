@@ -26,9 +26,26 @@ namespace GUI
 
         private void cancelLogin(object sender, RoutedEventArgs e)
         {
-            var window = new MainWindow();
-            window.Show();
-            this.Close();
+            if (Global.ScreenMapping.ContainsKey("Main Window"))
+            {
+                MainWindow window = (MainWindow)Global.ScreenMapping["Main Window"];
+                window.setTypeUser(0);
+                window.reloadData();
+                // window.setNhanVienInfo(NhanVienData);
+                window.Visibility = Visibility.Visible ;
+                this.Close();
+            }
+            else
+            {
+                MainWindow window = new MainWindow();
+                window.setTypeUser(0);
+                window.reloadData();
+                //window.setNhanVienInfo(NhanVienData);
+                Global.ScreenMapping.Add("Main Window", window);
+                window.Visibility = Visibility.Visible;
+                this.Close();
+            }
+            //this.Close();
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
@@ -61,18 +78,19 @@ namespace GUI
                 if (Global.ScreenMapping.ContainsKey("Main Window"))
                 {
                     MainWindow window = (MainWindow)Global.ScreenMapping["Main Window"];
-                    window.reloadData();
-                    window.setTypeUser(2);
                     window.setNhanVienInfo(NhanVienData);
-                    window.Show();
+                    window.setTypeUser(2);
+                    window.reloadData();
+                    window.Visibility = Visibility.Visible;
                     this.Close();
                 } else
                 {
                     MainWindow window = new MainWindow();
-                    window.setTypeUser(2);
                     window.setNhanVienInfo(NhanVienData);
+                    window.setTypeUser(2);
+                    window.reloadData();
                     Global.ScreenMapping.Add("Main Window", window);
-                    window.Show();
+                    window.Visibility = Visibility.Visible;
                     this.Close();
                 }
                 
@@ -100,10 +118,11 @@ namespace GUI
                     if (Global.ScreenMapping.ContainsKey("Main Window"))
                     {
                         MainWindow window = (MainWindow)Global.ScreenMapping["Main Window"];
-                        window.reloadData();
+                       
                         window.setTypeUser(1);
                         window.setThanhVienInfo(ThanhVienData);
-                        window.Show();
+                        window.reloadData();
+                        window.Visibility = Visibility.Visible;
                         this.Close();
                     }
                     else
@@ -111,8 +130,9 @@ namespace GUI
                         MainWindow window = new MainWindow();
                         window.setTypeUser(1);
                         window.setThanhVienInfo(ThanhVienData);
+                        window.reloadData();
                         Global.ScreenMapping.Add("Main Window", window);
-                        window.Show();
+                        window.Visibility = Visibility.Visible;
                         this.Close();
                     }
 
@@ -132,10 +152,10 @@ namespace GUI
                         if (Global.ScreenMapping.ContainsKey("Main Window"))
                         {
                             MainWindow window = (MainWindow)Global.ScreenMapping["Main Window"];
-                            window.reloadData();
                             window.setTypeUser(3);
                             window.setQuanlyInfo(NhanVienQuanLyData);
-                            window.Show();
+                            window.reloadData();
+                            window.Visibility = Visibility.Visible;
                             this.Close();
                         }
                         else
@@ -143,8 +163,9 @@ namespace GUI
                             MainWindow window = new MainWindow();
                             window.setTypeUser(3);
                             window.setQuanlyInfo(NhanVienQuanLyData);
+                            window.reloadData();
                             Global.ScreenMapping.Add("Main Window", window);
-                            window.Show();
+                            window.Visibility = Visibility.Visible;
                             this.Close();
                         }
 

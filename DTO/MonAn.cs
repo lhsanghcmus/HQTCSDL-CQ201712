@@ -66,6 +66,9 @@ namespace DTO
             MonAn t = new MonAn();
             t.soLuong = this.soLuong;
             t.SoLuongDuocChon = this.SoLuongDuocChon;
+            t.maMon = this.maMon;
+            t.tenMon = this.tenMon;
+            t.donGia = this.donGia;
             return t;
         }
     }

@@ -54,6 +54,7 @@ namespace GUI
                 listMonAn[index].SoLuong--;
                 listMonAn[index].SoLuongDuocChon++;
                 itemListView.ItemsSource = null;
+                GC.Collect();
                 itemListView.ItemsSource = listMonAn;
                 count++;
                 countSelected.Content = baseString + count.ToString();
@@ -81,6 +82,7 @@ namespace GUI
                 listMonAn[index].SoLuong++;
                 count--;
                 itemListView.ItemsSource = null;
+                GC.Collect();
                 itemListView.ItemsSource = listMonAn;
                 countSelected.Content = baseString + count.ToString();
             }
@@ -121,8 +123,11 @@ namespace GUI
         public void resetData()
         {
             count = 0;
+            listMonAn = null;
+            GC.Collect();
             listMonAn = BUS.MonAn.GetThucDon(Global.MaChiNhanh, 0, 0);
             DTO.Global.DanhSachMonAn = Array.ConvertAll(listMonAn, a => a.Clone());
+            itemListView.ItemsSource = null;
             itemListView.ItemsSource = listMonAn;
             countSelected.Content = "Đã chọn: 0";
         }

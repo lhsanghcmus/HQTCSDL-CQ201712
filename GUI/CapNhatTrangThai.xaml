@@ -13,7 +13,7 @@
          TextOptions.TextRenderingMode="Auto"
         
          FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Cập nhật trạng thái đơn hàng" Height="210" Width="310" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        Title="Cập nhật trạng thái đơn hàng" Height="315" Width="610" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <StackPanel>
         <StackPanel Background="#415bb7" Height="30" VerticalAlignment="Top">
             <Grid Height="30"  VerticalAlignment="Top" >
@@ -25,30 +25,40 @@
                 </Button>
             </Grid>
         </StackPanel>
-        <Border Height="180" BorderBrush="#415bb7" BorderThickness="1 0 1 1">
+        <Border Height="285" BorderBrush="#415bb7" BorderThickness="1 0 1 1">
             <StackPanel x:Name="orderData" Margin="0 5 0 0">
-                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
                         <Label>Mã đơn hàng:</Label>
-                        <Label x:Name="txtMaDonHang" Margin="6 0 0 0" Width="205" ></Label>
+                        <Label x:Name="txtMaDonHang" Margin="29 0 0 0" Width="350" ></Label>
+                        <Button x:Name="btnHuyDonHang" Visibility="Collapsed" Background="Red" BorderBrush="Red" Content="Hủy đơn hàng" Click="BtnHuyDonHang_Click"></Button>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
                         <Label>Tổng tiền:</Label>
-                        <Label x:Name="txtTongTien" Margin="29 0 0 0" Width="205"></Label>
+                        <Label x:Name="txtTongTien" Margin="51 0 0 0" Width="480"></Label>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                        <Label>Địa chỉ đặt:</Label>
+                        <Label x:Name="txtDiaChiDat" Margin="44.5 0 0 0" Width="480"></Label>
+                    </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                        <Label>Địa chỉ nhận:</Label>
+                        <Label x:Name="txtDiaChiNhan" Margin="33.5 0 0 0" Width="480"></Label>
+                    </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
                         <Label>Trạng thái:</Label>
-                        <Label x:Name="txtTrangThai" Margin="25 0 0 0" Width="205"></Label>
+                        <Label x:Name="txtTrangThai" Margin="47.5 0 0 0" Width="480"></Label>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
                         <Label>Trạng thái mới:</Label>
-                        <ComboBox x:Name="chooseStatus" Margin="0 0 0 0" Width="205">
+                        <ComboBox x:Name="chooseStatus" Margin="25 0 0 0" Width="480">
                             <ComboBoxItem IsSelected="True">Tiếp nhận</ComboBoxItem>
                             <ComboBoxItem>Đang chuẩn bị</ComboBoxItem>
                             <ComboBoxItem>Đang giao</ComboBoxItem>
                             <ComboBoxItem>Hoàn tất</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
+                
                     <StackPanel Margin="0 20 0 0" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
                         <Button Width="90" Click="CapNhat_Click">Xác nhận</Button>
                         <Button Width="90" Margin="10 0 0 0" Background="Red" BorderBrush="Red" Click="HuyThaoTac_Click">Hủy</Button>

@@ -39,6 +39,10 @@ namespace GUI
             {
                 listViewDonHang.ItemsSource = BUS.Action.GetDanhSachDonHang(DTO.Global.ThanhVien.MaThanhVien);
             }
+            else
+            {
+                listViewDonHang.ItemsSource = null;
+            }
         }
 
         private void ListViewDonHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -78,10 +82,28 @@ namespace GUI
                     if (info != null)
                     {
                         c.initData(info);
+                        DTO.Global.ScreenMapping.Add("Cap Nhat Trang Thai", c);
                         c.ShowDialog();
                     }
-                    DTO.Global.ScreenMapping.Add("Cap Nhat Trang Thai", c);
                 }
+            }
+        }
+        public void reloadData()
+        {
+            if (DTO.Global.NhanVien != null)
+            {
+                listViewDonHang.ItemsSource = BUS.Action.GetDanhSachDonHang(DTO.Global.NhanVien.MaChiNhanh);
+            }
+            else if (DTO.Global.NhanVienQuanLy != null)
+            {
+                listViewDonHang.ItemsSource = BUS.Action.GetDanhSachDonHang(0);
+            }
+            else if (DTO.Global.ThanhVien != null)
+            {
+                listViewDonHang.ItemsSource = BUS.Action.GetDanhSachDonHang(DTO.Global.ThanhVien.MaThanhVien);
+            } else
+            {
+                listViewDonHang.ItemsSource = null;
             }
         }
     }

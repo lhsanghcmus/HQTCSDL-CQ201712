@@ -48,6 +48,19 @@ namespace GUI
             }
             typeUser = 0;
             setTypeUser(0);
+            if (Global.NhanVien != null || Global.NhanVienQuanLy != null)
+            {
+                ft_CapNhatThucDon.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ft_CapNhatThucDon.Visibility = Visibility.Hidden;
+            }
+            if (!Global.ScreenMapping.ContainsKey("Main Window"))
+            {
+                Global.ScreenMapping.Add("Main Window", this);
+            }
+         
         }
 
         public void reloadData()
@@ -68,11 +81,32 @@ namespace GUI
                     }
                 }
             }
+            if (Global.NhanVien != null || Global.NhanVienQuanLy != null)
+            {
+                ft_CapNhatThucDon.Visibility = Visibility.Visible;
+            } else
+            {
+                ft_CapNhatThucDon.Visibility = Visibility.Hidden;
+            }
+            cmbChiNhanh.ItemsSource = listChiNhanh;
+            cmbChiNhanh.SelectedIndex = 0;
+            Global.ChiNhanh = listChiNhanh[cmbChiNhanh.SelectedIndex];
         }
 
         private void BtnLogout_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            Global.MaChiNhanh = 0;
+            thanhVien = null;
+            nhanVien = null;
+            nhanVienQuanLy = null;
+            DTO.Global.ThanhVien = null;
+            DTO.Global.NhanVien = null;
+            DTO.Global.NhanVienQuanLy = null;
+            GC.Collect();
+            var window = new Login();
+            window.Show();
+            this.Visibility = Visibility.Collapsed;
+
         }
 
         private void BtnOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -113,38 +147,46 @@ namespace GUI
         {
             cmbChiNhanh.ItemsSource = listChiNhanh;
             cmbChiNhanh.SelectedIndex = 0;
+            Global.ChiNhanh = listChiNhanh[cmbChiNhanh.SelectedIndex];
         }
 
         private void CmbChiNhanh_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           // MessageBox.Show(listChiNhanh[cmbChiNhanh.SelectedIndex].MaChiNhanh.ToString());
-            //Global.MaChiNhanh =
-            Global.MaChiNhanh = int.Parse(listChiNhanh[cmbChiNhanh.SelectedIndex].MaChiNhanh.ToString());
-            Global.ChiNhanh = listChiNhanh[cmbChiNhanh.SelectedIndex];
-            if (Global.ScreenMapping.ContainsKey("Chon Dia Chi"))
+            if (cmbChiNhanh.SelectedIndex != -1)
             {
-                ChonDiaChi t = (ChonDiaChi)Global.ScreenMapping["Chon Dia Chi"];
-                t.loadDataUser();
-                t.listMonAnDuocChon = null;
-            } else
-            {
-                ChonDiaChi t = new ChonDiaChi();
-                t.listMonAnDuocChon = null;
-                t.loadDataUser();
-                Global.ScreenMapping.Add("Chon Dia Chi", t);
+                Global.MaChiNhanh = int.Parse(listChiNhanh[cmbChiNhanh.SelectedIndex].MaChiNhanh.ToString());
+                Global.ChiNhanh = listChiNhanh[cmbChiNhanh.SelectedIndex];
+                if (Global.ScreenMapping.ContainsKey("Chon Dia Chi"))
+                {
+                    ChonDiaChi t = (ChonDiaChi)Global.ScreenMapping["Chon Dia Chi"];
+                    t.loadDataUser();
+                    t.listMonAnDuocChon = null;
+                }
+                else
+                {
+                    ChonDiaChi t = new ChonDiaChi();
+                    t.listMonAnDuocChon = null;
+                    GC.Collect();
+                    t.loadDataUser();
+                    Global.ScreenMapping.Add("Chon Dia Chi", t);
+                }
+                if (Global.ScreenMapping.ContainsKey("Thuc Don"))
+                {
+                    ThucDon t = (ThucDon)Global.ScreenMapping["Thuc Don"];
+                    t.resetData();
+                }
             }
-            if (Global.ScreenMapping.ContainsKey("Thuc Don"))
-            {
-                ThucDon t = (ThucDon)Global.ScreenMapping["Thuc Don"];
-                t.resetData();
-            }
+            
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            DTO.Global.ThanhVien = null;
+            DTO.Global.NhanVien = null;
+            DTO.Global.NhanVienQuanLy = null;
             var window = new Login();
             window.Show();
-            this.Close();
+            this.Visibility = Visibility.Collapsed;
         }
         public void setTypeUser(int type)
         {
@@ -153,20 +195,28 @@ namespace GUI
             {
                 customerLogin.Visibility = Visibility.Visible;
                 notLogin.Visibility = Visibility.Collapsed;
+                Global.MaChiNhanh = 0;
             } else if (this.typeUser == 0) // sai hoặc chưa login
             {
+                Global.MaChiNhanh = 0;
                 notLogin.Visibility = Visibility.Visible;
                 customerLogin.Visibility = Visibility.Collapsed;
+                nhanVien = null;
+                thanhVien = null;
+                nhanVienQuanLy = null;
+                GC.Collect();
             }
             else if (this.typeUser == 2) // nhân viên 1 chi nhánh
             {
                 customerLogin.Visibility = Visibility.Visible;
                 notLogin.Visibility = Visibility.Collapsed;
+                Global.MaChiNhanh = nhanVien.MaChiNhanh;
             }
             else if (this.typeUser == 3) // nhân viên toàn chi nhánh
             {
                 customerLogin.Visibility = Visibility.Visible;
                 notLogin.Visibility = Visibility.Collapsed;
+                Global.MaChiNhanh = 0;
             }
             Global.LoaiUser = this.typeUser;
         }
@@ -196,7 +246,22 @@ namespace GUI
                         GridPrincipal.Content = Global.ScreenMapping["Don Hang"];
                     }
                     break;
+                case 2:
+                    if (Global.ScreenMapping.ContainsKey("Cap Nhat Thuc Don"))
+                    {
+                        GridPrincipal.Content = Global.ScreenMapping["Cap Nhat Thuc Don"];
+                    } else
+                    {
+                        Global.ScreenMapping.Add("Cap Nhat Thuc Don", new CapNhatThucDon());
+                        GridPrincipal.Content = Global.ScreenMapping["Cap Nhat Thuc Don"];
+                    }
+                    break;
             }
+        }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

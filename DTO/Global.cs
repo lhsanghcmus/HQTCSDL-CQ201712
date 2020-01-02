@@ -20,5 +20,7 @@ namespace DTO
         public static double GiamGia = 0;
         public static double TongTien= 0;
         public static DTO.MonAn[] DanhSachMonAn = null;
+        public static List<int> DonHangDaDat = new List<int>();
+        public static List<int> DonHangNhap = new List<int>();
     }
 }

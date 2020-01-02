@@ -1,0 +1,61 @@
+﻿<Window x:Class="GUI.XacNhanCapNhatThucDon"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+        
+         FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="XacNhanCapNhatThucDon" Height="255" Width="600" WindowStyle="None" ResizeMode="NoResize">
+    <StackPanel>
+        <StackPanel Background="#415bb7" Height="30" VerticalAlignment="Top">
+            <Grid Height="30"  VerticalAlignment="Top" >
+                <TextBlock VerticalAlignment="Center" Foreground="#fff" Margin="3 0 0 0">Cập nhật món ăn</TextBlock>
+                <Button Width="50" Height="20" Margin="0 0 3 0" Click="Close_Click"  Background="#e74c3c" BorderBrush="#e74c3c" BorderThickness="0" HorizontalAlignment="Right" >
+                    <Button.Content>
+                        <materialDesign:PackIcon Kind="Close" VerticalAlignment="Center"/>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </StackPanel>
+        <Border Height="225" BorderBrush="#415bb7" BorderThickness="1 0 1 1">
+            <StackPanel x:Name="orderData" Margin="0 5 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <Label>Mã món:</Label>
+                    <Label x:Name="txtMaMon" Margin="76 0 0 0" Width="400" ></Label>
+                    <Button x:Name="RemoveMonAn" BorderBrush="Red" Background="Red" Click="RemoveMonAn_Click">Xóa</Button>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                    <Label>Tên món:</Label>
+                    <TextBox x:Name="txtTenMon" Margin="75 0 0 0" Width="450" IsEnabled="False"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                    <Label>Đơn giá:</Label>
+                    <TextBox x:Name="txtDonGia" Margin="80 0 0 0" Width="450" IsEnabled="False"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                    <Label>Số lượng còn lại:</Label>
+                    <Label x:Name="txtSoLuongConLai" Margin="32 0 0 0" Width="450"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                    <Label>Số lượng mới:</Label>
+                    <TextBox x:Name="txtSoLuongMoi" Margin="47.5 0 0 0" Width="450"></TextBox>
+                </StackPanel>
+
+                <StackPanel Margin="0 20 0 0" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Width="90" Click="CapNhat_Click">Xác nhận</Button>
+                    <Button Width="90" Margin="10 0 0 0" Background="Red" BorderBrush="Red" Click="Close_Click">Hủy</Button>
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</Window>

@@ -35,13 +35,13 @@ namespace GUI
             int MaLoi = BUS.Action.HuyDonHang(ThongTinDonHang.MaDonHang);
             if (MaLoi == -1)
             {
-                MessageBox.Show("Hủy đơn hàng thất bại", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Hand);
+                MessageBox.Show("Hủy đơn hàng thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Hand);
             } else if (MaLoi == 1)
             {
-                MessageBox.Show("Trạng thái đơn hàng không hợp lệ để hủy", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Hand);
+                MessageBox.Show("Trạng thái đơn hàng không hợp lệ để hủy", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Hand);
             }  else
             {
-                MessageBox.Show("Hủy đơn hàng thành công", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                MessageBox.Show("Hủy đơn hàng thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
     }

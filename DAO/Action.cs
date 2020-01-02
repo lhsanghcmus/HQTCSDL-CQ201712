@@ -186,7 +186,132 @@ namespace DAO
 
         }
 
+        public static int CapNhatTrangThaiDonhang(int MaDonHang, int TrangThaiMoi)
+        {
+            SqlConnection con = DataProvider.GetConnection();
+            SqlCommand cmd = new SqlCommand("SP_CAPNHATTRANGTHAIDON", con);
+            cmd.CommandType = CommandType.StoredProcedure;
 
+            cmd.Parameters.AddWithValue("@MaDonHang", MaDonHang);
+            cmd.Parameters.AddWithValue("@TrangThaiMoi", TrangThaiMoi);
+            cmd.Parameters.AddWithValue("@MaLoi", 0);
+            cmd.Parameters["@MaLoi"].Direction = ParameterDirection.Output;
+            int MaLoi = -1;
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MaLoi = int.Parse(cmd.Parameters["@MaLoi"].Value.ToString());
+                DataProvider.CloseConnection(con);
+                return MaLoi;
+            } catch (Exception e)
+            {
+                DataProvider.CloseConnection(con);
+                return MaLoi;
+            }
+
+        }
+
+        public static int CapNhatMonAn(int MaMon, int MaChiNhanh, double DonGia, string TenMon, int SoLuongMoi)
+        {
+            SqlConnection con = DataProvider.GetConnection();
+            SqlCommand cmd = new SqlCommand("sp_UpdateMonAn", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@MaMon", MaMon);
+            cmd.Parameters.AddWithValue("@MaChiNhanh", MaChiNhanh);
+            cmd.Parameters.AddWithValue("@DonGia", DonGia);
+            cmd.Parameters.AddWithValue("@TenMon", TenMon);
+            cmd.Parameters.AddWithValue("@SoLuongMoi", SoLuongMoi);
+            cmd.Parameters.AddWithValue("@MaLoi", 0);
+            cmd.Parameters["@MaLoi"].Direction = ParameterDirection.Output;
+            int MaLoi = -1;
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MaLoi = int.Parse(cmd.Parameters["@MaLoi"].Value.ToString());
+                DataProvider.CloseConnection(con);
+                return MaLoi;
+            }
+            catch (Exception e)
+            {
+                DataProvider.CloseConnection(con);
+                return MaLoi;
+            }
+        }
+
+        public static DTO.MonAn[] LayMonAnChuaCoTrongChiNhanh(int MaChiNhanh)
+        {
+            List<DTO.MonAn> result = new List<DTO.MonAn>();
+            SqlConnection con = DataProvider.GetConnection();
+            SqlCommand cmd = new SqlCommand("sp_LayMonChuaCoTrongChiNhanh", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@MaChiNhanh", MaChiNhanh);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                DTO.MonAn monAn = new DTO.MonAn();
+                monAn.MaMon = int.Parse(reader["MAMON"].ToString());
+                monAn.TenMon = reader["TENMON"].ToString();
+                monAn.MaLoai = int.Parse(reader["MALOAI"].ToString());
+                monAn.DonGia = double.Parse(reader["DONGIA"].ToString());
+                monAn.HinhAnh = null;
+                result.Add(monAn);
+            }
+            DataProvider.CloseConnection(con);
+            return result.ToArray();
+        }
+
+        public static int ThemMonVaoChiNhanh(int MaMon, int MaChiNhanh, int SoLuong)
+        {
+            SqlConnection con = DataProvider.GetConnection();
+            SqlCommand cmd = new SqlCommand("sp_ThemMonVaoChiNhanh", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@MaChiNhanh", MaChiNhanh);
+            cmd.Parameters.AddWithValue("@MaMon", MaMon);
+            cmd.Parameters.AddWithValue("@SoLuong", SoLuong);
+            cmd.Parameters.AddWithValue("@MaLoi", 0);
+            cmd.Parameters["@MaLoi"].Direction = ParameterDirection.Output;
+            int MaLoi = -1;
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MaLoi = int.Parse(cmd.Parameters["@MaLoi"].Value.ToString());
+                DataProvider.CloseConnection(con);
+                return MaLoi;
+            }catch (Exception e)
+            {
+                DataProvider.CloseConnection(con);
+                return MaLoi;
+            }
+        }
+
+        public static int XoaMonKhoiChiNhanh(int MaMon, int MaChiNhanh)
+        {
+            SqlConnection con = DataProvider.GetConnection();
+            SqlCommand cmd = new SqlCommand("sp_XoaMonAnKhoiChiNhanh", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@MaChiNhanh", MaChiNhanh);
+            cmd.Parameters.AddWithValue("@MaMon", MaMon);
+            cmd.Parameters.AddWithValue("@MaLoi", 0);
+            cmd.Parameters["@MaLoi"].Direction = ParameterDirection.Output;
+            int MaLoi = -1;
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MaLoi = int.Parse(cmd.Parameters["@MaLoi"].Value.ToString());
+                DataProvider.CloseConnection(con);
+                return MaLoi;
+            }
+            catch (Exception e)
+            {
+                DataProvider.CloseConnection(con);
+                return MaLoi;
+            }
+        }
 
     }
 }
