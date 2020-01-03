@@ -55,6 +55,7 @@ namespace GUI
                     if (DTO.Global.ScreenMapping.ContainsKey("Xac Nhan Huy Don"))
                     {
                         HuyDon h = (HuyDon)DTO.Global.ScreenMapping["Xac Nhan Huy Don"];
+                        h.ThongTinDonHang = info;
                         h.ShowDialog();
                     } else
                     {

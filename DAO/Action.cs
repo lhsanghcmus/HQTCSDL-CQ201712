@@ -196,7 +196,7 @@ namespace DAO
             return result.ToArray();
         }
 
-        public static int HuyDonHang(int MaDonHang)
+        public static string HuyDonHang(int MaDonHang)
         {
             SqlConnection con = DataProvider.GetConnection();
             SqlCommand cmd;
@@ -224,16 +224,22 @@ namespace DAO
                 cmd.ExecuteNonQuery(); 
                 MaLoi = int.Parse(cmd.Parameters["@MaLoi"].Value.ToString());
                 DataProvider.CloseConnection(con);
-                return MaLoi;
+                if (MaLoi == 1)
+                {
+                    return "Trạng thái đơn hàng không hợp lệ để hủy";
+                } else
+                {
+                    return "";
+                }
             } catch (Exception e)
             {
                 DataProvider.CloseConnection(con);
-                return MaLoi;
+                return e.Message;
             }
 
         }
 
-        public static int CapNhatTrangThaiDonhang(int MaDonHang, int TrangThaiMoi)
+        public static string CapNhatTrangThaiDonhang(int MaDonHang, int TrangThaiMoi)
         {
             SqlConnection con = DataProvider.GetConnection();
             SqlCommand cmd;
@@ -262,11 +268,19 @@ namespace DAO
                 cmd.ExecuteNonQuery();
                 MaLoi = int.Parse(cmd.Parameters["@MaLoi"].Value.ToString());
                 DataProvider.CloseConnection(con);
-                return MaLoi;
+                if (MaLoi == 1)
+                {
+                    return "Đơn hàng đã hoàn tất không thể hủy";
+                }
+                else if (MaLoi == 2)
+                {
+                    return "Đơn hàng nháp không thể hủy";
+                }
+                return "";
             } catch (Exception e)
             {
                 DataProvider.CloseConnection(con);
-                return MaLoi;
+                return e.Message;
             }
 
         }

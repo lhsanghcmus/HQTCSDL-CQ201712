@@ -135,6 +135,7 @@ namespace GUI
             DTO.Global.DanhSachMonAn = Array.ConvertAll(listMonAn, a => a.Clone());
             itemListView.ItemsSource = listMonAn;
             countSelected.Content = "Đã chọn: 0";
+            count = 0;
         }
     }
 }

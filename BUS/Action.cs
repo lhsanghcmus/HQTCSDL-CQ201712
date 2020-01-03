@@ -16,11 +16,11 @@ namespace BUS
         {
             return DAO.Action.GetDanhSachDonHang(Code);
         }
-        public static int HuyDonHang(int MaDonHang)
+        public static string HuyDonHang(int MaDonHang)
         {
             return DAO.Action.HuyDonHang(MaDonHang);
         }
-        public static int CapNhatTrangThaiDonhang(int MaDonHang, int TrangThaiMoi)
+        public static string CapNhatTrangThaiDonhang(int MaDonHang, int TrangThaiMoi)
         {
             return DAO.Action.CapNhatTrangThaiDonhang(MaDonHang, TrangThaiMoi);
         }

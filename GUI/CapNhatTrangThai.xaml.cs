@@ -67,45 +67,36 @@ namespace GUI
             } else
             {
                 int index = chooseStatus.SelectedIndex;
-                int MaLoi = BUS.Action.CapNhatTrangThaiDonhang(info.MaDonHang, index + 1);
-                if (MaLoi == 0)
+                string MsgLoi = BUS.Action.CapNhatTrangThaiDonhang(info.MaDonHang, index + 1);
+                if (MsgLoi == "")
                 {
                     MessageBox.Show("Cập nhật trạng thái đơn hàng thành công", "Thông báo", MessageBoxButton.OK);
                     DonHang d = (DonHang)DTO.Global.ScreenMapping["Don Hang"];
                     d.reloadData();
                     this.Visibility = Visibility.Collapsed;
 
-                } else if (MaLoi == -1)
+                } else 
                 {
-                    MessageBox.Show("Không thể cập nhật trạng thái đơn hàng", "Thông báo", MessageBoxButton.OK);
-                } else if (MaLoi == 1)
-                {
-                    MessageBox.Show("Trạng thái hoàn tất không thể cập nhật thành trạng thái khác", "Thông báo", MessageBoxButton.OK);
-                } else if (MaLoi == 0)
-                {
-                    MessageBox.Show("Đơn nháp không thể cập nhật trạng thái", "Thông báo", MessageBoxButton.OK);
+                    MessageBox.Show(MsgLoi, "Thông báo", MessageBoxButton.OK);
                 }
             }
         }
 
         private void BtnHuyDonHang_Click(object sender, RoutedEventArgs e)
         {
-            int MaLoi = BUS.Action.HuyDonHang(info.MaDonHang);
-            if (MaLoi == -1)
+            string MsgLoi = BUS.Action.HuyDonHang(info.MaDonHang);
+            if (MsgLoi == "")
             {
-                MessageBox.Show("Hủy đơn hàng thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Hand);
-            }
-            else if (MaLoi == 1)
-            {
-                MessageBox.Show("Trạng thái đơn hàng không hợp lệ để hủy", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Hand);
-            }
-            else
-            {
-                MessageBox.Show("Hủy đơn hàng thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Hủy đơn hàng thành công", "Thông báo", MessageBoxButton.OK);
                 DonHang d = (DonHang)DTO.Global.ScreenMapping["Don Hang"];
                 d.reloadData();
                 this.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                MessageBox.Show(MsgLoi, "Thông báo", MessageBoxButton.OK);
+            }
+           
         }
     }
 }

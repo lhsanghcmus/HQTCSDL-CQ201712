@@ -32,17 +32,17 @@ namespace GUI
 
         private void HuyDonHang_Click(object sender, RoutedEventArgs e)
         {
-            int MaLoi = BUS.Action.HuyDonHang(ThongTinDonHang.MaDonHang);
-            if (MaLoi == -1)
+            string MsgLoi = BUS.Action.HuyDonHang(ThongTinDonHang.MaDonHang);
+            if (MsgLoi == "")
             {
-                MessageBox.Show("Hủy đơn hàng thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Hand);
-            } else if (MaLoi == 1)
+                MessageBox.Show("Hủy đơn hàng thành công", "Thông báo", MessageBoxButton.OK);
+                DonHang d = (DonHang)DTO.Global.ScreenMapping["Don Hang"];
+                d.reloadData();
+                Visibility = Visibility.Collapsed;
+            } else
             {
-                MessageBox.Show("Trạng thái đơn hàng không hợp lệ để hủy", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Hand);
-            }  else
-            {
-                MessageBox.Show("Hủy đơn hàng thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+                MessageBox.Show(MsgLoi, "Thông báo", MessageBoxButton.OK);
+            } 
         }
     }
 }
