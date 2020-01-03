@@ -8,7 +8,7 @@ namespace BUS
 {
     public class Action
     {
-        public static int DatMon(DTO.ThongTinTien info)
+        public static string DatMon(DTO.ThongTinTien info)
         {
             return DAO.Action.DatMon(info);
         }
@@ -24,7 +24,7 @@ namespace BUS
         {
             return DAO.Action.CapNhatTrangThaiDonhang(MaDonHang, TrangThaiMoi);
         }
-        public static int CapNhatMonAn(int MaMon, int MaChiNhanh, double DonGia, string TenMon, int SoLuongMoi)
+        public static string CapNhatMonAn(int MaMon, int MaChiNhanh, double DonGia, string TenMon, int SoLuongMoi)
         {
             return DAO.Action.CapNhatMonAn(MaMon, MaChiNhanh, DonGia, TenMon, SoLuongMoi);
         }

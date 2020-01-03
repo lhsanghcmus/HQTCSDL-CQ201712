@@ -23,8 +23,12 @@ namespace DTO
         public static List<int> DonHangDaDat = new List<int>();
         public static List<int> DonHangNhap = new List<int>();
 
-        public static bool fixTruySuatDongThoi = false;
+        public static bool fixLostUpdate = false;
         public static bool fixDeadlock = false;
+
+        public static bool fixUnrepeatableRead = false;
+        public static bool fixDirtyRead = false;
+        public static bool fixPhantom = false;
 
     }
 }

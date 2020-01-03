@@ -26,11 +26,6 @@ namespace GUI
         public ThucDon()
         {
             InitializeComponent();
-            listMonAn = BUS.MonAn.GetThucDon(1, 0, 0);
-            DTO.Global.DanhSachMonAn = Array.ConvertAll(listMonAn, a => a.Clone());
-            itemListView.ItemsSource = listMonAn;
-            countSelected.Content = "Đã chọn: 0";
-
         }
 
         private void TangSoLuong(object sender, RoutedEventArgs e)
@@ -132,6 +127,14 @@ namespace GUI
             countSelected.Content = "Đã chọn: 0";
         }
 
-      
+        private void ItemListView_Loaded(object sender, RoutedEventArgs e)
+        {
+            listMonAn = null;
+            GC.Collect();
+            listMonAn = BUS.MonAn.GetThucDon(1, 0, 0);
+            DTO.Global.DanhSachMonAn = Array.ConvertAll(listMonAn, a => a.Clone());
+            itemListView.ItemsSource = listMonAn;
+            countSelected.Content = "Đã chọn: 0";
+        }
     }
 }

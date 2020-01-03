@@ -13,7 +13,7 @@
         <Grid VerticalAlignment="top" Height="50">
             <Button x:Name="countSelected" FontFamily="Montserrat" HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Center" Height="30" Click="CountSelected_Click"></Button>
         </Grid>
-        <ListView x:Name="itemListView" HorizontalAlignment="Stretch" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="0,60,0,-91.4" Height="481">
+        <ListView x:Name="itemListView" HorizontalAlignment="Stretch" VerticalAlignment="Top" Loaded="ItemListView_Loaded" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="0,60,0,-91.4" Height="481">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="4"  HorizontalAlignment="Stretch"/>

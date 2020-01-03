@@ -71,8 +71,8 @@ namespace GUI
             
             if (DTO.Global.NhanVienQuanLy == null)
             {
-                int MaLoi = BUS.Action.CapNhatMonAn(info.MaMon, DTO.Global.MaChiNhanh, -1, "", iSoLuongMoi);
-                if (MaLoi == 0)
+                string MsgLoi = BUS.Action.CapNhatMonAn(info.MaMon, DTO.Global.MaChiNhanh, -1, "", iSoLuongMoi);
+                if (MsgLoi == "")
                 {
                     MessageBox.Show("Cập nhật số lượng món ăn thành công", "Thông báo", MessageBoxButton.OK);
                     ThucDon t = (ThucDon)DTO.Global.ScreenMapping["Thuc Don"];
@@ -80,9 +80,9 @@ namespace GUI
                     CapNhatThucDon c = (CapNhatThucDon)DTO.Global.ScreenMapping["Cap Nhat Thuc Don"];
                     c.reloadData();
                     Visibility = Visibility.Collapsed;
-                } else if (MaLoi == 1)
+                } else 
                 {
-                    MessageBox.Show("Cập nhật số lượng món ăn thất bại", "Thông báo", MessageBoxButton.OK);
+                    MessageBox.Show(MsgLoi, "Thông báo", MessageBoxButton.OK);
                 }
             } else
             {
@@ -104,8 +104,8 @@ namespace GUI
                     MessageBox.Show("Vui lòng nhập tên món", "Thông báo", MessageBoxButton.OK);
                     return;
                 }
-                int MaLoi = BUS.Action.CapNhatMonAn(info.MaMon, DTO.Global.MaChiNhanh, dDonGia, sTenMon, iSoLuongMoi);
-                if (MaLoi == 0)
+                string MsgLoi = BUS.Action.CapNhatMonAn(info.MaMon, DTO.Global.MaChiNhanh, dDonGia, sTenMon, iSoLuongMoi);
+                if (MsgLoi == "")
                 {
                     MessageBox.Show("Cập nhật món ăn thành công", "Thông báo", MessageBoxButton.OK);
                     ThucDon t = (ThucDon)DTO.Global.ScreenMapping["Thuc Don"];
@@ -114,9 +114,9 @@ namespace GUI
                     c.reloadData();
                     Visibility = Visibility.Collapsed;
                 }
-                else if (MaLoi == 1)
+                else 
                 {
-                    MessageBox.Show("Cập nhật món ăn thất bại", "Thông báo", MessageBoxButton.OK);
+                    MessageBox.Show(MsgLoi, "Thông báo", MessageBoxButton.OK);
                 }
             }
             

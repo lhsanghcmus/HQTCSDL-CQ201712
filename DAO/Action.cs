@@ -10,10 +10,25 @@ namespace DAO
 {
     public class Action
     {
-        public static int DatMon(DTO.ThongTinTien info)
+        public static string DatMon(DTO.ThongTinTien info)
         {
             SqlConnection con = DataProvider.GetConnection();
-            SqlCommand cmd = new SqlCommand("SP_DATMON", con);
+            SqlCommand cmd;
+            if (DTO.Global.fixLostUpdate == false)
+            {
+                cmd = new SqlCommand("SP_DATMONchuaFixLostUpdate", con);
+            } else
+            {
+                if (DTO.Global.fixDeadlock == false)
+                {
+                    cmd = new SqlCommand("SP_DATMON_lostUpdate_ChuaFixDeadLock", con);
+                } else
+                {
+                    cmd = new SqlCommand("SP_DATMONlostUpdate_DaFixDeadLock", con);
+                }
+            }
+
+
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@MaDonHang", info.MaDonCuoiCung);
@@ -36,14 +51,27 @@ namespace DAO
                 DTO.Global.GiamGia = double.Parse(cmd.Parameters["@GiamGia"].Value.ToString());
                 DTO.Global.TongTien = double.Parse(cmd.Parameters["@TongTien"].Value.ToString());
                 DataProvider.CloseConnection(con);
+                if (MaLoi == 0)
+                {
+                    return "";
+                }
+                if (MaLoi == 2)
+                {
+                    return "Số lượng còn lại của khuyến mãi không đủ";
+                }
+                if (MaLoi == 1)
+                {
+                    return "Số lượng còn lại của món ăn không đủ";
+                }
 
             } catch (Exception e)
             {
                 DataProvider.CloseConnection(con);
-                return MaLoi;
+                return e.Message;
             }
-            DataProvider.CloseConnection(con);
-            return MaLoi;
+            return "";
+         //   DataProvider.CloseConnection(con);
+           
         }
 
         public static DTO.ThongTinDonHang[] GetDanhSachDonHang(int Code)
@@ -52,7 +80,13 @@ namespace DAO
             SqlCommand cmd;
             if (DTO.Global.ThanhVien == null)
             {
-                cmd = new SqlCommand("sp_DSDH_NV", con);
+                if (DTO.Global.fixPhantom == false)
+                {
+                    cmd = new SqlCommand("sp_DSDH_NV_chuaFixPhantom", con);
+                } else
+                {
+                    cmd = new SqlCommand("sp_DSDH_NV_daFixPhantom", con);
+                }
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@MaChiNhanh", Code);
             } else
@@ -165,7 +199,20 @@ namespace DAO
         public static int HuyDonHang(int MaDonHang)
         {
             SqlConnection con = DataProvider.GetConnection();
-            SqlCommand cmd = new SqlCommand("sp_HUYDONHANG_KH", con);
+            SqlCommand cmd;
+            if (DTO.Global.fixLostUpdate == false)
+            {
+                cmd = new SqlCommand("sp_HUYDONHANG_KH_chuaFixLostUpdate", con);
+            } else
+            {
+                if (DTO.Global.fixDeadlock == false)
+                {
+                    cmd = new SqlCommand("sp_HUYDONHANG_KH_lostUpdate_ChuaFixDeadLock", con);
+                } else
+                {
+                    cmd = new SqlCommand("sp_HUYDONHANG_KH_lostUpdate_daFixDeadLock", con);
+                }
+            }
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@MaDonHang", MaDonHang);
@@ -189,7 +236,20 @@ namespace DAO
         public static int CapNhatTrangThaiDonhang(int MaDonHang, int TrangThaiMoi)
         {
             SqlConnection con = DataProvider.GetConnection();
-            SqlCommand cmd = new SqlCommand("SP_CAPNHATTRANGTHAIDON", con);
+            SqlCommand cmd;
+            if (DTO.Global.fixLostUpdate == false)
+            {
+                cmd = new SqlCommand("SP_CAPNHATTRANGTHAIDON_chuaFixLostUpdate", con);
+            } else
+            {
+                if (DTO.Global.fixDeadlock == false)
+                {
+                    cmd = new SqlCommand("SP_CAPNHATTRANGTHAIDON_lostUpdate_ChuaFixDeadLock", con);
+                } else
+                {
+                    cmd = new SqlCommand("SP_CAPNHATTRANGTHAIDON_lostUpdate_daFixDeadLock", con);
+                }
+            }
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@MaDonHang", MaDonHang);
@@ -211,10 +271,24 @@ namespace DAO
 
         }
 
-        public static int CapNhatMonAn(int MaMon, int MaChiNhanh, double DonGia, string TenMon, int SoLuongMoi)
+        public static string CapNhatMonAn(int MaMon, int MaChiNhanh, double DonGia, string TenMon, int SoLuongMoi)
         {
             SqlConnection con = DataProvider.GetConnection();
-            SqlCommand cmd = new SqlCommand("sp_UpdateMonAn", con);
+            SqlCommand cmd;
+            if (DTO.Global.fixLostUpdate == false)
+            {
+                cmd = new SqlCommand("sp_UpdateMonAnchuaFixLostUpdate", con);
+            }
+            else
+            {
+                if (DTO.Global.fixDeadlock == false)
+                {
+                    cmd = new SqlCommand("sp_UpdateMonAnlostUpdate_ChuaFixDeadLock", con);
+                } else
+                {
+                    cmd = new SqlCommand("sp_UpdateMonAnlostUpdate_DaFixDeadLock", con);
+                }
+            }
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@MaMon", MaMon);
@@ -230,13 +304,29 @@ namespace DAO
                 cmd.ExecuteNonQuery();
                 MaLoi = int.Parse(cmd.Parameters["@MaLoi"].Value.ToString());
                 DataProvider.CloseConnection(con);
-                return MaLoi;
+                if (MaLoi == 0)
+                {
+                    return "";
+                }
+                if (MaLoi == 1)
+                {
+                    return "Số lượng món ăn còn lại không đủ";
+                }
             }
             catch (Exception e)
             {
                 DataProvider.CloseConnection(con);
-                return MaLoi;
+                return e.Message;
             }
+            if (MaLoi == 0)
+            {
+                return "";
+            }
+            if (MaLoi == 1)
+            {
+                return "Số lượng món ăn còn lại không đủ";
+            }
+            return "";
         }
 
         public static DTO.MonAn[] LayMonAnChuaCoTrongChiNhanh(int MaChiNhanh)

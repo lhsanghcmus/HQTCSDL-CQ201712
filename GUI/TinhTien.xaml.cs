@@ -59,8 +59,8 @@ namespace GUI
 
         private void DatMon_Click(object sender, RoutedEventArgs e)
         {
-            int MaLoi = BUS.Action.DatMon(ThongTinTien);
-            if (MaLoi == 0)
+            string Loi = BUS.Action.DatMon(ThongTinTien);
+            if (Loi == "")
             {
                 MessageBox.Show("Đặt món thành công","Thông báo",MessageBoxButton.OK);
                 DTO.Global.DonHangNhap.Remove(ThongTinTien.MaDonCuoiCung);
@@ -78,7 +78,7 @@ namespace GUI
                 this.Visibility = Visibility.Hidden;
             } else
             {
-                MessageBox.Show("Lỗi: " + MaLoi.ToString());
+                MessageBox.Show(Loi,"Thông báo",MessageBoxButton.OK);
             }
         }
     }
