@@ -128,10 +128,17 @@
                     </ListViewItem>
                     <ListViewItem  Height="60">
                         <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Margin="10" Kind="PlaylistEdit" Width="25" Height="25" VerticalAlignment="Center"></materialDesign:PackIcon>
+                            <TextBlock Text="Thống kê doanh thu" FontFamily="Montserrat" VerticalAlignment="Center" Margin="20 10"></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem  Height="60">
+                        <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Margin="10" Kind="BugCheckOutline" Width="25" Height="25" VerticalAlignment="Center"></materialDesign:PackIcon>
                             <TextBlock Text="Quản lý lỗi" FontFamily="Montserrat" VerticalAlignment="Center" Margin="20 10"></TextBlock>
                         </StackPanel>
                     </ListViewItem>
+                    
                 </ListView>
             </StackPanel>
             

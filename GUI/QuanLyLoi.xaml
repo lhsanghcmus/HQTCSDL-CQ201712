@@ -9,49 +9,127 @@
       Title="QuanLyLoi">
 
     <StackPanel>
-        <StackPanel>
-            <GroupBox Header="Lỗi Lost Update">
-                <StackPanel>
-                    <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
-                        <Label>Fix lost update:</Label>
-                        <CheckBox x:Name="fixLostUpdate" Click="FixLostUpdate_Click"></CheckBox>
-                    </StackPanel>
-                    <StackPanel Margin="0 30 0 0" Orientation="Horizontal">
-                        <Label>Fix lỗi deadlock:</Label>
-                        <CheckBox x:Name="fixDeadlock" Click="FixDeadlock_Click"></CheckBox>
-                    </StackPanel>
+        <ListView Height="540">
+            <ListViewItem>
+                <StackPanel Width="990">
+                    <GroupBox Header="Lỗi Lost Update">
+                        <StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Lỗi Lost Update 1:</Label>
+                                <CheckBox x:Name="ckbLostUpdate1" Click="CkbLostUpdate1_Click"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Lỗi Lost Update 2:</Label>
+                                <CheckBox x:Name="ckbLostUpdate2" Click="CkbLostUpdate2_Click"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Lỗi Lost Update 3:</Label>
+                                <CheckBox x:Name="ckbLostUpdate3" Click="CkbLostUpdate3_Click"></CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
                 </StackPanel>
-            </GroupBox>
-        </StackPanel>
-        <StackPanel>
-            <GroupBox Header="Lỗi Dirty Read">
-                <StackPanel>
-                    <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
-                        <Label>Fix dirty read:</Label>
-                        <CheckBox x:Name="fixDirtyRead" Click="FixDirtyRead_Click"></CheckBox>
-                    </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Width="990">
+                    <GroupBox Header="Lỗi Phantom">
+                        <StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Lỗi Phantom 1:</Label>
+                                <CheckBox x:Name="ckbPhantom1" Click="CkbPhantom1_Click"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Lỗi Phantom 2:</Label>
+                                <CheckBox x:Name="ckbPhantom2" Click="CkbPhantom2_Click"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Lỗi Phantom 3:</Label>
+                                <CheckBox x:Name="ckbPhantom3" Click="CkbPhantom3_Click"></CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
                 </StackPanel>
-            </GroupBox>
-        </StackPanel>
-        <StackPanel>
-            <GroupBox Header="Lỗi Unrepeatable Read">
-                <StackPanel>
-                    <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
-                        <Label>Fix unrepeatable read:</Label>
-                        <CheckBox x:Name="fixUnrepeatableRead" Click="FixUnrepeatableRead_Click"></CheckBox>
-                    </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Width="990">
+                    <GroupBox Header="Lỗi Dirty Read">
+                        <StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Lỗi Dirty Read 1:</Label>
+                                <CheckBox x:Name="ckbDirtyRead1" Click="CkbDirtyRead1_Click"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Lỗi Dirty Read 2:</Label>
+                                <CheckBox x:Name="ckbDirtyRead2" Click="CkbDirtyRead2_Click"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Lỗi Dirty Read 3:</Label>
+                                <CheckBox x:Name="ckbDirtyRead3" Click="CkbDirtyRead3_Click"></CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
                 </StackPanel>
-            </GroupBox>
-        </StackPanel>
-        <StackPanel>
-            <GroupBox Header="Lỗi Phantom">
-                <StackPanel>
-                    <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
-                        <Label>Fix Phantom:</Label>
-                        <CheckBox x:Name="fixPhantom" Click="FixPhantom_Click"></CheckBox>
-                    </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Width="990">
+                    <GroupBox Header="Lỗi Unrepeatable Read">
+                        <StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Lỗi Unrepeatable read 1:</Label>
+                                <CheckBox x:Name="ckbUnrepeatableRead1" Click="CkbUnrepeatableRead1_Click"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Lỗi Unrepeatable read 2:</Label>
+                                <CheckBox x:Name="ckbUnrepeatableRead2" Click="CkbUnrepeatableRead2_Click"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Lỗi Unrepeatable read 3:</Label>
+                                <CheckBox x:Name="ckbUnrepeatableRead3" Click="CkbUnrepeatableRead3_Click"></CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
                 </StackPanel>
-            </GroupBox>
-        </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Width="990">
+                    <GroupBox Header="Lỗi Deadlock">
+                        <StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Lỗi deadlock 1:</Label>
+                                <CheckBox x:Name="clbDeadlock1" Click="ClbDeadlock1_Click"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Lỗi deadlock 2:</Label>
+                                <CheckBox x:Name="clbDeadlock2" Click="ClbDeadlock2_Click"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Lỗi deadlock 3:</Label>
+                                <CheckBox x:Name="clbDeadlock3" Click="ClbDeadlock3_Click"></CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Width="990">
+                    <GroupBox Header="Trạng thái">
+                        <StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Sửa lỗi:</Label>
+                                <CheckBox x:Name="fixed" Click="Fixed_Click"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                                <Label>Không sửa lỗi:</Label>
+                                <CheckBox x:Name="notFixed" Click="NotFixed_Click"></CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </ListViewItem>
+        </ListView>
+    
+       
+       
+    
     </StackPanel>
 </Page>

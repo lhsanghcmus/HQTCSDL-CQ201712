@@ -24,9 +24,9 @@ namespace BUS
         {
             return DAO.Action.CapNhatTrangThaiDonhang(MaDonHang, TrangThaiMoi);
         }
-        public static string CapNhatMonAn(int MaMon, int MaChiNhanh, double DonGia, string TenMon, int SoLuongMoi)
+        public static string CapNhatMonAn(int MaMon, int MaChiNhanh, double DonGia, string TenMon, int SoLuongTangThem)
         {
-            return DAO.Action.CapNhatMonAn(MaMon, MaChiNhanh, DonGia, TenMon, SoLuongMoi);
+            return DAO.Action.CapNhatMonAn(MaMon, MaChiNhanh, DonGia, TenMon, SoLuongTangThem);
         }
         public static DTO.MonAn[] LayMonAnChuaCoTrongChiNhanh(int MaChiNhanh)
         {
@@ -39,6 +39,14 @@ namespace BUS
         public static int XoaMonKhoiChiNhanh(int MaMon, int MaChiNhanh)
         {
             return DAO.Action.XoaMonKhoiChiNhanh(MaMon, MaChiNhanh);
+        }
+        public static DTO.MonAn TimMonAn(int MaChiNhanh, string TextToSearch)
+        {
+            return DAO.Action.TimMonAn(MaChiNhanh, TextToSearch);
+        }
+        public static DTO.DoanhThu[] ThongKeDoanhThu()
+        {
+            return DAO.Action.ThongKeDoanhThu();
         }
     }
 }

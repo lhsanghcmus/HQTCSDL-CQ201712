@@ -256,7 +256,7 @@ namespace GUI
                         GridPrincipal.Content = Global.ScreenMapping["Cap Nhat Thuc Don"];
                     }
                     break;
-                case 3:
+                case 4:
                     if (Global.ScreenMapping.ContainsKey("Quan Ly Loi"))
                     {
                         GridPrincipal.Content = Global.ScreenMapping["Quan Ly Loi"];
@@ -264,6 +264,16 @@ namespace GUI
                     {
                         Global.ScreenMapping.Add("Quan Ly Loi", new QuanLyLoi());
                         GridPrincipal.Content = Global.ScreenMapping["Quan Ly Loi"];
+                    }
+                    break;
+                case 3:
+                    if (Global.ScreenMapping.ContainsKey("Thong Ke Doanh Thu"))
+                    {
+                        GridPrincipal.Content = Global.ScreenMapping["Thong Ke Doanh Thu"];
+                    } else
+                    {
+                        Global.ScreenMapping.Add("Thong Ke Doanh Thu", new ThongKeDoanhThu());
+                        GridPrincipal.Content = Global.ScreenMapping["Thong Ke Doanh Thu"];
                     }
                     break;
             }

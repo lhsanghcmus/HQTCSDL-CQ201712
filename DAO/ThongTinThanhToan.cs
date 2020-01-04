@@ -27,13 +27,7 @@ namespace DAO
 
             SqlConnection con = DataProvider.GetConnection();
             SqlCommand cmd;
-            if (DTO.Global.fixPhantom == false)
-            {
-                cmd = new SqlCommand("Sp_TinhToanChiPhi_chuaFixPhantom", con);
-            } else
-            {
-                cmd = new SqlCommand("Sp_TinhToanChiPhi_daFixPhantom", con);
-            }
+            cmd = new SqlCommand("Sp_TinhToanChiPhi", con);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@DanhSach", danhSach);

@@ -67,6 +67,9 @@
     <Compile Include="CapNhatTrangThai.xaml.cs">
       <DependentUpon>CapNhatTrangThai.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChiTietMonAn.xaml.cs">
+      <DependentUpon>ChiTietMonAn.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ChonDiaChi.xaml.cs">
       <DependentUpon>ChonDiaChi.xaml</DependentUpon>
     </Compile>
@@ -82,6 +85,9 @@
     <Compile Include="ThemMonAnMoi.xaml.cs">
       <DependentUpon>ThemMonAnMoi.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ThongKeDoanhThu.xaml.cs">
+      <DependentUpon>ThongKeDoanhThu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ThucDon.xaml.cs">
       <DependentUpon>ThucDon.xaml</DependentUpon>
     </Compile>
@@ -96,6 +102,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CapNhatTrangThai.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChiTietMonAn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ThemMonAnMoi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ThongKeDoanhThu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

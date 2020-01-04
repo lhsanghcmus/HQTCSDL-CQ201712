@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DoanhThu.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="MonAn.cs" />
     <Compile Include="NhanVien.cs" />

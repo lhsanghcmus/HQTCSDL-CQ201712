@@ -137,5 +137,35 @@ namespace GUI
             countSelected.Content = "Đã chọn: 0";
             count = 0;
         }
+
+        private void TextToSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (textToSearch.Text != "")
+            {
+                if (e.Key == Key.Enter) {
+                    DTO.MonAn result = BUS.Action.TimMonAn(DTO.Global.MaChiNhanh, textToSearch.Text);
+                    if (result == null)
+                    {
+                        MessageBox.Show("Không tìm thấy món ăn muốn tìm", "Thông báo", MessageBoxButton.OK);
+                    }
+                    else
+                    {
+                        if (DTO.Global.ScreenMapping.ContainsKey("Chi Tiet Mon An"))
+                        {
+                            ChiTietMonAn c = (ChiTietMonAn)DTO.Global.ScreenMapping["Chi Tiet Mon An"];
+                            c.initData(result);
+                            c.Visibility = Visibility.Visible;
+                        } else
+                        {
+                            ChiTietMonAn c = new ChiTietMonAn();
+                            c.initData(result);
+                            DTO.Global.ScreenMapping.Add("Chi Tiet Mon An", c);
+                            c.Visibility = Visibility.Visible;
+
+                        }
+                    }
+                }
+            }
+        }
     }
 }

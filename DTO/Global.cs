@@ -30,5 +30,8 @@ namespace DTO
         public static bool fixDirtyRead = false;
         public static bool fixPhantom = false;
 
+        public static int typeOfErr = 0;
+        public static bool isFixed = false;
+
     }
 }

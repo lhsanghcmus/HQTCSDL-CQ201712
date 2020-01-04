@@ -14,19 +14,49 @@ namespace DAO
         {
             SqlConnection con = DataProvider.GetConnection();
             SqlCommand cmd;
-            if (DTO.Global.fixLostUpdate == false)
+
+            if (DTO.Global.typeOfErr == 1)
             {
-                cmd = new SqlCommand("SP_DATMONchuaFixLostUpdate", con);
-            } else
-            {
-                if (DTO.Global.fixDeadlock == false)
+                if (DTO.Global.isFixed == true)
                 {
-                    cmd = new SqlCommand("SP_DATMON_lostUpdate_ChuaFixDeadLock", con);
+                    cmd = new SqlCommand("SP_DATMON_LostUpdate1", con);
                 } else
                 {
-                    cmd = new SqlCommand("SP_DATMONlostUpdate_DaFixDeadLock", con);
+                    cmd = new SqlCommand("SP_DATMON_NonLostUpdate1", con);
                 }
+            } else if (DTO.Global.typeOfErr == 2)
+            {
+                if (DTO.Global.isFixed == true)
+                {
+                    cmd = new SqlCommand("SP_DATMON_LostUpdate2", con);
+                } else
+                {
+                    cmd = new SqlCommand("SP_DATMON_NonLostUpdate2", con);
+                }
+            } else if (DTO.Global.typeOfErr == 6)
+            {
+                if (DTO.Global.isFixed == true)
+                {
+                    cmd = new SqlCommand("SP_DATMON_Phantom3", con);
+                } else
+                {
+                    cmd = new SqlCommand("SP_DATMON_NonPhantom3", con);
+                }
+            } else if (DTO.Global.typeOfErr == 7)
+            {
+                if (DTO.Global.isFixed == true)
+                {
+                    cmd = new SqlCommand("SP_DATMON_DirtyRead1", con);
+                } else
+                {
+                    cmd = new SqlCommand("SP_DATMON", con);
+                }
+            } else
+            {
+                cmd = new SqlCommand("SP_DATMON", con);
             }
+
+           
 
 
             cmd.CommandType = CommandType.StoredProcedure;
@@ -80,12 +110,31 @@ namespace DAO
             SqlCommand cmd;
             if (DTO.Global.ThanhVien == null)
             {
-                if (DTO.Global.fixPhantom == false)
+                if (DTO.Global.typeOfErr == 4)
                 {
-                    cmd = new SqlCommand("sp_DSDH_NV_chuaFixPhantom", con);
-                } else
+                    if (DTO.Global.isFixed == true)
+                    {
+                        cmd = new SqlCommand("sp_DSDH_NV_Phantom1", con);
+                    }
+                    else
+                    {
+                        cmd = new SqlCommand("sp_DSDH_NV_NonPhantom1", con);
+                    }
+                }
+                else if (DTO.Global.typeOfErr == 5)
                 {
-                    cmd = new SqlCommand("sp_DSDH_NV_daFixPhantom", con);
+                    if (DTO.Global.isFixed == true)
+                    {
+                        cmd = new SqlCommand("sp_DSDH_NV_Phantom2", con);
+                    }
+                    else
+                    {
+                        cmd = new SqlCommand("sp_DSDH_NV_NonPhantom2", con);
+                    }
+                }
+                else
+                {
+                    cmd = new SqlCommand("sp_DSDH_NV", con);
                 }
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@MaChiNhanh", Code);
@@ -98,6 +147,7 @@ namespace DAO
             
 
             SqlDataReader reader = cmd.ExecuteReader();
+            
             List<DTO.ThongTinDonHang> result = new List<DTO.ThongTinDonHang>();
             while (reader.Read())
             {
@@ -200,18 +250,27 @@ namespace DAO
         {
             SqlConnection con = DataProvider.GetConnection();
             SqlCommand cmd;
-            if (DTO.Global.fixLostUpdate == false)
+            if (DTO.Global.typeOfErr == 3)
             {
-                cmd = new SqlCommand("sp_HUYDONHANG_KH_chuaFixLostUpdate", con);
-            } else
-            {
-                if (DTO.Global.fixDeadlock == false)
+                if (DTO.Global.isFixed == true)
                 {
-                    cmd = new SqlCommand("sp_HUYDONHANG_KH_lostUpdate_ChuaFixDeadLock", con);
+                    cmd = new SqlCommand("sp_HUYDONHANG_KH_LostUpdate3", con);
                 } else
                 {
-                    cmd = new SqlCommand("sp_HUYDONHANG_KH_lostUpdate_daFixDeadLock", con);
+                    cmd = new SqlCommand("sp_HUYDONHANG_KH_NonLostUpdate3", con);
                 }
+            } else if (DTO.Global.typeOfErr == 7)
+            {
+                if (DTO.Global.isFixed == true)
+                {
+                    cmd = new SqlCommand("sp_HUYDONHANG_KH_DirtyRead1", con);
+                } else
+                {
+                    cmd = new SqlCommand("sp_HUYDONHANG_KH_NonDirtyRead1", con);
+                }
+            } else
+            {
+                cmd = new SqlCommand("sp_HUYDONHANG_KH", con);
             }
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -243,18 +302,18 @@ namespace DAO
         {
             SqlConnection con = DataProvider.GetConnection();
             SqlCommand cmd;
-            if (DTO.Global.fixLostUpdate == false)
+            if (DTO.Global.typeOfErr == 3)
             {
-                cmd = new SqlCommand("SP_CAPNHATTRANGTHAIDON_chuaFixLostUpdate", con);
-            } else
-            {
-                if (DTO.Global.fixDeadlock == false)
+                if (DTO.Global.isFixed == true)
                 {
-                    cmd = new SqlCommand("SP_CAPNHATTRANGTHAIDON_lostUpdate_ChuaFixDeadLock", con);
+                    cmd = new SqlCommand("SP_CAPNHATTRANGTHAIDON_LostUpdate3", con);
                 } else
                 {
-                    cmd = new SqlCommand("SP_CAPNHATTRANGTHAIDON_lostUpdate_daFixDeadLock", con);
+                    cmd = new SqlCommand("SP_CAPNHATTRANGTHAIDON_NonLostUpdate3", con);
                 }
+            } else
+            {
+                cmd = new SqlCommand("SP_CAPNHATTRANGTHAIDON", con);
             }
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -285,31 +344,33 @@ namespace DAO
 
         }
 
-        public static string CapNhatMonAn(int MaMon, int MaChiNhanh, double DonGia, string TenMon, int SoLuongMoi)
+        public static string CapNhatMonAn(int MaMon, int MaChiNhanh, double DonGia, string TenMon, int SoLuongTangThem)
         {
             SqlConnection con = DataProvider.GetConnection();
             SqlCommand cmd;
-            if (DTO.Global.fixLostUpdate == false)
+
+            if (DTO.Global.typeOfErr == 1)
             {
-                cmd = new SqlCommand("sp_UpdateMonAnchuaFixLostUpdate", con);
-            }
-            else
-            {
-                if (DTO.Global.fixDeadlock == false)
+                if (DTO.Global.isFixed == true)
                 {
-                    cmd = new SqlCommand("sp_UpdateMonAnlostUpdate_ChuaFixDeadLock", con);
+                    cmd = new SqlCommand("sp_UpdateMonAn_LostUpdate1", con);
                 } else
                 {
-                    cmd = new SqlCommand("sp_UpdateMonAnlostUpdate_DaFixDeadLock", con);
+                    cmd = new SqlCommand("sp_UpdateMonAn_NoNLostUpdate1", con);
                 }
+            } else
+            {
+                cmd = new SqlCommand("sp_UpdateMonAn", con);
             }
+
+            
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@MaMon", MaMon);
             cmd.Parameters.AddWithValue("@MaChiNhanh", MaChiNhanh);
             cmd.Parameters.AddWithValue("@DonGia", DonGia);
             cmd.Parameters.AddWithValue("@TenMon", TenMon);
-            cmd.Parameters.AddWithValue("@SoLuongMoi", SoLuongMoi);
+            cmd.Parameters.AddWithValue("@SoLuongTangThem", SoLuongTangThem);
             cmd.Parameters.AddWithValue("@MaLoi", 0);
             cmd.Parameters["@MaLoi"].Direction = ParameterDirection.Output;
             int MaLoi = -1;
@@ -415,6 +476,104 @@ namespace DAO
                 DataProvider.CloseConnection(con);
                 return MaLoi;
             }
+        }
+
+        public static DTO.MonAn TimMonAn(int MaChiNhanh, string TextToSearch)
+        {
+            SqlConnection con = DataProvider.GetConnection();
+            SqlCommand cmd;
+            if (DTO.Global.typeOfErr == 10)
+            {
+                if (DTO.Global.isFixed == true)
+                {
+                    cmd = new SqlCommand("sp_TimKiemMonAn_DaFixUnrepeatableRead", con);
+                } else
+                {
+                    cmd = new SqlCommand("sp_TimKiemMonAn_NonUnrepeatableRead1", con);
+                }
+            } else
+            {
+                cmd = new SqlCommand("sp_TimKiemMonAn", con);
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@MaChiNhanh", MaChiNhanh);
+            cmd.Parameters.AddWithValue("@SearchText", TextToSearch);
+
+            DTO.MonAn result = null;
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                result = new DTO.MonAn();
+                result.MaMon = int.Parse(reader["MaMon"].ToString());
+                result.TenMon = reader["TenMon"].ToString();
+                result.MaLoai = int.Parse(reader["MaLoai"].ToString());
+                result.TenLoai = reader["TenLoai"].ToString();
+                result.SoLuong = int.Parse(reader["SoLuong"].ToString());
+                result.DonGia = double.Parse(reader["DonGia"].ToString());
+                byte[] img = (byte[])(reader["HINHANH"]);
+
+                if (img == null)
+                {
+                    result.HinhAnh = null;
+                }
+                else
+                {
+                    result.HinhAnh = DTO.MonAn.BitmapImageFromBytes(img);
+                }
+            }
+            return result;
+        }
+
+        public static DTO.DoanhThu[] ThongKeDoanhThu()
+        {
+            SqlConnection con = DataProvider.GetConnection();
+            SqlCommand cmd = new SqlCommand();
+
+            if (DTO.Global.typeOfErr == 11)
+            {
+                if (DTO.Global.isFixed == true)
+                {
+                    cmd = new SqlCommand("sp_THONGKEDOANHTHU_DaFixUnrepeatableRead", con);
+                }
+                else
+                {
+                    cmd = new SqlCommand("sp_THONGKEDOANHTHU_ChuaFixUnrepeatableRead", con);
+                }
+            }
+            else
+            {
+                cmd = new SqlCommand("sp_THONGKEDOANHTHU", con);
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+
+            DataTable tableDoanhThu = ds.Tables[0];
+            DataTable tableTongDoanhThu = ds.Tables[1];
+
+            double TongDoanhThu = 0;
+
+            foreach (DataRow row in tableTongDoanhThu.Rows)
+            {
+                TongDoanhThu = double.Parse(row["TONGDOANHTHU"].ToString());
+            }
+            List<DTO.DoanhThu> result = new List<DTO.DoanhThu>();
+            foreach (DataRow row in tableDoanhThu.Rows)
+            {
+                DTO.DoanhThu doanhThu = new DTO.DoanhThu();
+                doanhThu.MaChiNhanh = int.Parse(row["MACHINHANH"].ToString());
+                doanhThu.TenChiNhanh = row["TENCHINHANH"].ToString();
+                doanhThu.LuongDoanhThu = double.Parse(row["DOANHTHU"].ToString());
+                doanhThu.TongDoanhThu = TongDoanhThu;
+                result.Add(doanhThu);
+            }
+
+            return result.ToArray();
+
         }
 
     }

@@ -46,8 +46,8 @@
                     <Label x:Name="txtSoLuongConLai" Margin="32 0 0 0" Width="450"></Label>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
-                    <Label>Số lượng mới:</Label>
-                    <TextBox x:Name="txtSoLuongMoi" Margin="47.5 0 0 0" Width="450"></TextBox>
+                    <Label>Số lượng thêm:</Label>
+                    <TextBox x:Name="txtSoLuongTangThem" Margin="47.5 0 0 0" Width="450"></TextBox>
                 </StackPanel>
 
                 <StackPanel Margin="0 20 0 0" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">

@@ -11,6 +11,10 @@
 
     <Grid>
         <Grid VerticalAlignment="top" Height="50">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label VerticalAlignment="Center" FontSize="16" FontStyle="Italic">Tìm kiếm món ăn</Label>
+                <TextBox x:Name="textToSearch" Width="300" FontSize="16" Margin="5 10 0 10" FontFamily="Montserrat" KeyDown="TextToSearch_KeyDown"></TextBox>
+            </StackPanel>
             <Button x:Name="countSelected" FontFamily="Montserrat" HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Center" Height="30" Click="CountSelected_Click"></Button>
         </Grid>
         <ListView x:Name="itemListView" HorizontalAlignment="Stretch" VerticalAlignment="Top" Loaded="ItemListView_Loaded" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="0,60,0,-91.4" Height="481">

@@ -32,7 +32,7 @@ namespace GUI
             txtTenMon.Text = info.TenMon;
             txtDonGia.Text = info.DonGia.ToString();
             txtSoLuongConLai.Content = info.SoLuong;
-            txtSoLuongMoi.Text = info.SoLuong.ToString();
+            txtSoLuongTangThem.Text = info.SoLuong.ToString();
 
             if (DTO.Global.NhanVienQuanLy != null)
             {
@@ -54,24 +54,24 @@ namespace GUI
         private void CapNhat_Click(object sender, RoutedEventArgs e)
         {
             Regex regex = new Regex(@"^\d+$");
-            string sSoLuongMoi = txtSoLuongMoi.Text;
-            int iSoLuongMoi = 0;
-            if (sSoLuongMoi.Length == 0)
+            string sSoLuongTangThem = txtSoLuongTangThem.Text;
+            int iSoLuongTangThem = 0;
+            if (sSoLuongTangThem.Length == 0)
             {
                 MessageBox.Show("Vui lòng nhập số lượng mới", "Thông báo", MessageBoxButton.OK);
                 return;
             }
             
-            if (!regex.IsMatch(sSoLuongMoi))
+            if (!regex.IsMatch(sSoLuongTangThem))
             {
                  MessageBox.Show("Số lượng mới không hợp lệ", "Thông báo", MessageBoxButton.OK);
                     return;
-            } 
-            iSoLuongMoi = int.Parse(sSoLuongMoi);
+            }
+            iSoLuongTangThem = int.Parse(sSoLuongTangThem);
             
             if (DTO.Global.NhanVienQuanLy == null)
             {
-                string MsgLoi = BUS.Action.CapNhatMonAn(info.MaMon, DTO.Global.MaChiNhanh, -1, "", iSoLuongMoi);
+                string MsgLoi = BUS.Action.CapNhatMonAn(info.MaMon, DTO.Global.MaChiNhanh, -1, "", iSoLuongTangThem);
                 if (MsgLoi == "")
                 {
                     MessageBox.Show("Cập nhật số lượng món ăn thành công", "Thông báo", MessageBoxButton.OK);
@@ -104,7 +104,7 @@ namespace GUI
                     MessageBox.Show("Vui lòng nhập tên món", "Thông báo", MessageBoxButton.OK);
                     return;
                 }
-                string MsgLoi = BUS.Action.CapNhatMonAn(info.MaMon, DTO.Global.MaChiNhanh, dDonGia, sTenMon, iSoLuongMoi);
+                string MsgLoi = BUS.Action.CapNhatMonAn(info.MaMon, DTO.Global.MaChiNhanh, dDonGia, sTenMon, iSoLuongTangThem);
                 if (MsgLoi == "")
                 {
                     MessageBox.Show("Cập nhật món ăn thành công", "Thông báo", MessageBoxButton.OK);
