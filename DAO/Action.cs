@@ -49,7 +49,7 @@ namespace DAO
                     cmd = new SqlCommand("SP_DATMON_DirtyRead1", con);
                 } else
                 {
-                    cmd = new SqlCommand("SP_DATMON", con);
+                    cmd = new SqlCommand("SP_DATMON_NonDirtyRead1", con);
                 }
             } else
             {
@@ -250,16 +250,7 @@ namespace DAO
         {
             SqlConnection con = DataProvider.GetConnection();
             SqlCommand cmd;
-            if (DTO.Global.typeOfErr == 3)
-            {
-                if (DTO.Global.isFixed == true)
-                {
-                    cmd = new SqlCommand("sp_HUYDONHANG_KH_LostUpdate3", con);
-                } else
-                {
-                    cmd = new SqlCommand("sp_HUYDONHANG_KH_NonLostUpdate3", con);
-                }
-            } else if (DTO.Global.typeOfErr == 7)
+            if (DTO.Global.typeOfErr == 7)
             {
                 if (DTO.Global.isFixed == true)
                 {
@@ -267,6 +258,15 @@ namespace DAO
                 } else
                 {
                     cmd = new SqlCommand("sp_HUYDONHANG_KH_NonDirtyRead1", con);
+                }
+            } else if (DTO.Global.typeOfErr == 8)
+            {
+                if (DTO.Global.isFixed == true)
+                {
+                    cmd = new SqlCommand("sp_HUYDONHANG_KH_DirtyRead2", con);
+                } else
+                {
+                    cmd = new SqlCommand("sp_HUYDONHANG_KH_NonDirtyRead2", con);
                 }
             } else
             {
@@ -302,19 +302,10 @@ namespace DAO
         {
             SqlConnection con = DataProvider.GetConnection();
             SqlCommand cmd;
-            if (DTO.Global.typeOfErr == 3)
-            {
-                if (DTO.Global.isFixed == true)
-                {
-                    cmd = new SqlCommand("SP_CAPNHATTRANGTHAIDON_LostUpdate3", con);
-                } else
-                {
-                    cmd = new SqlCommand("SP_CAPNHATTRANGTHAIDON_NonLostUpdate3", con);
-                }
-            } else
-            {
+           
+            
                 cmd = new SqlCommand("SP_CAPNHATTRANGTHAIDON", con);
-            }
+            
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@MaDonHang", MaDonHang);
@@ -358,7 +349,25 @@ namespace DAO
                 {
                     cmd = new SqlCommand("sp_UpdateMonAn_NoNLostUpdate1", con);
                 }
-            } else
+            } else if (DTO.Global.typeOfErr == 8)
+            {
+                if (DTO.Global.isFixed == true)
+                {
+                    cmd = new SqlCommand("sp_UpdateMonAn_DirtyRead2", con);
+                } else
+                {
+                    cmd = new SqlCommand("sp_UpdateMonAn_NonDirtyRead2", con);
+                }
+            } else if (DTO.Global.typeOfErr == 3)
+            {
+                if (DTO.Global.isFixed == true)
+                {
+                    cmd = new SqlCommand("sp_UpdateMonAn_LostUpdate3", con);
+                } else
+                {
+                    cmd = new SqlCommand("sp_UpdateMonAn_NonLostUpdate3", con);
+                }
+            }
             {
                 cmd = new SqlCommand("sp_UpdateMonAn", con);
             }

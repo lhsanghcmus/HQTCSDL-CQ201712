@@ -54,7 +54,15 @@ namespace GUI
             }
             else
             {
-                ft_CapNhatThucDon.Visibility = Visibility.Hidden;
+                ft_CapNhatThucDon.Visibility = Visibility.Collapsed;
+            }
+            if (Global.NhanVienQuanLy == null)
+            {
+                ft_ThongKeDoanhThu.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                ft_ThongKeDoanhThu.Visibility = Visibility.Visible;
             }
             if (!Global.ScreenMapping.ContainsKey("Main Window"))
             {
@@ -86,7 +94,14 @@ namespace GUI
                 ft_CapNhatThucDon.Visibility = Visibility.Visible;
             } else
             {
-                ft_CapNhatThucDon.Visibility = Visibility.Hidden;
+                ft_CapNhatThucDon.Visibility = Visibility.Collapsed;
+            }
+            if (Global.NhanVienQuanLy == null)
+            {
+                ft_ThongKeDoanhThu.Visibility = Visibility.Collapsed;
+            } else
+            {
+                ft_ThongKeDoanhThu.Visibility = Visibility.Visible;
             }
             cmbChiNhanh.ItemsSource = listChiNhanh;
             cmbChiNhanh.SelectedIndex = 0;
